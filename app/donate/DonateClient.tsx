@@ -2,9 +2,13 @@
 
 import { useSearchParams } from "next/navigation";
 import DonateScreen from "../components/DonateScreen";
-import { MOCK_CAMPAIGNS } from "../../lib/mockData";
+import type { Campaign } from "../../types";
 
-export default function DonateClient() {
+interface DonateClientProps {
+  campaigns: Campaign[];
+}
+
+export default function DonateClient({ campaigns }: DonateClientProps) {
   const searchParams = useSearchParams();
   const campaignId = searchParams.get("campaignId");
   const category = searchParams.get("category");
@@ -17,17 +21,17 @@ export default function DonateClient() {
   };
 
   const resolvedCampaignId = (() => {
-    if (campaignId && MOCK_CAMPAIGNS.some((c) => c.id === campaignId)) {
+    if (campaignId && campaigns.some((c) => c.id === campaignId)) {
       return campaignId;
     }
     if (category) {
       const targetCategory = categoryMap[category] || category;
-      const match = MOCK_CAMPAIGNS.find(
+      const match = campaigns.find(
         (c) => c.category === targetCategory && c.percentage < 100
       );
       if (match) return match.id;
     }
-    return MOCK_CAMPAIGNS[0]?.id ?? "1";
+    return campaigns[0]?.id ?? "1";
   })();
 
   return (
@@ -35,6 +39,7 @@ export default function DonateClient() {
       backHref="/"
       campaignId={resolvedCampaignId}
       category={category}
+      campaigns={campaigns}
     />
   );
 }

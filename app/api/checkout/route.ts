@@ -1,12 +1,11 @@
 import Stripe from "stripe";
-import { MOCK_CAMPAIGNS } from "../../../lib/mockData";
+import { prisma } from "../../../lib/db";
 
 export const runtime = "nodejs";
 
 type CheckoutRequest = {
   campaignId: string;
   amount: number;
-  frequency: "once" | "monthly";
 };
 
 export async function POST(request: Request) {
@@ -36,17 +35,29 @@ export async function POST(request: Request) {
     return Response.json({ error: "Amount must be greater than zero." }, { status: 400 });
   }
 
-  const campaign = MOCK_CAMPAIGNS.find((c) => c.id === payload.campaignId);
-  if (!campaign) {
+  const campaign = await prisma.campaign.findUnique({
+    where: { id: payload.campaignId },
+  });
+  if (!campaign || !campaign.isActive) {
     return Response.json({ error: "Invalid campaignId." }, { status: 400 });
   }
 
   const origin = request.headers.get("origin") || "http://localhost:3000";
   const unitAmount = Math.round(payload.amount * 100);
 
-  const session = await stripe.checkout.sessions.create({
+  const donation = await prisma.donation.create({
+    data: {
+      campaignId: campaign.id,
+      amountCents: unitAmount,
+      currency: "usd",
+      status: "pending",
+    },
+  });
+
+  const sessionParams: Stripe.Checkout.SessionCreateParams = {
     mode: "payment",
     currency: "usd",
+    payment_method_types: ["card"],
     line_items: [
       {
         quantity: 1,
@@ -59,12 +70,44 @@ export async function POST(request: Request) {
         },
       },
     ],
-    success_url: `${origin}/success`,
+    success_url: `${origin}/success?campaignId=${campaign.id}`,
     cancel_url: `${origin}/donate`,
     metadata: {
       campaignId: payload.campaignId,
-      frequency: payload.frequency,
+      donationId: donation.id,
     },
+  };
+
+  let session: Stripe.Checkout.Session;
+  try {
+    session = await stripe.checkout.sessions.create(sessionParams);
+  } catch (error) {
+    const message =
+      typeof error === "object" && error !== null && "message" in error
+        ? String((error as { message: unknown }).message)
+        : "Failed to create Stripe session.";
+    const code =
+      typeof error === "object" && error !== null && "code" in error
+        ? String((error as { code: unknown }).code)
+        : null;
+    const type =
+      typeof error === "object" && error !== null && "type" in error
+        ? String((error as { type: unknown }).type)
+        : null;
+    console.error("Stripe checkout session error.", { message, code, type });
+    return Response.json(
+      {
+        error: message,
+        code,
+        type,
+      },
+      { status: 500 }
+    );
+  }
+
+  await prisma.donation.update({
+    where: { id: donation.id },
+    data: { stripeSessionId: session.id },
   });
 
   return Response.json({ url: session.url });

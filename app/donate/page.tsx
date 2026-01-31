@@ -1,10 +1,14 @@
+export const dynamic = "force-dynamic";
+
 import { Suspense } from "react";
 import DonateClient from "./DonateClient";
+import { getActiveCampaigns } from "../../lib/data";
 
-export default function DonatePage() {
+export default async function DonatePage() {
+  const campaigns = await getActiveCampaigns();
   return (
     <Suspense>
-      <DonateClient />
+      <DonateClient campaigns={campaigns} />
     </Suspense>
   );
 }

@@ -1,5 +1,7 @@
 import ExploreScreen from "../components/ExploreScreen";
+import { getActiveCampaigns } from "../../lib/data";
 
-export default function ExplorePage() {
-  return <ExploreScreen />;
+export default async function ExplorePage() {
+  const campaigns = await getActiveCampaigns();
+  return <ExploreScreen campaigns={campaigns} />;
 }

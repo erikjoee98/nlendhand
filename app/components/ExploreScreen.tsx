@@ -3,22 +3,26 @@
 
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
-import { MOCK_CAMPAIGNS } from "../../lib/mockData";
 import { formatNumber } from "../../lib/format";
+import type { Campaign } from "../../types";
 
-const ExploreScreen: React.FC = () => {
+interface ExploreScreenProps {
+    campaigns: Campaign[];
+}
+
+const ExploreScreen: React.FC<ExploreScreenProps> = ({ campaigns }) => {
     const [selectedChip, setSelectedChip] = useState<string>("All");
     
     const categories = ["All", "Mobility", "Recovery", "Emergency"];
     
     const filteredCampaigns = useMemo(() => {
-        if (selectedChip === "All") return MOCK_CAMPAIGNS;
-        return MOCK_CAMPAIGNS.filter(c => c.category === selectedChip);
-    }, [selectedChip]);
+        if (selectedChip === "All") return campaigns;
+        return campaigns.filter(c => c.category === selectedChip);
+    }, [selectedChip, campaigns]);
 
     const urgentNeeds = useMemo(() => 
-        MOCK_CAMPAIGNS.filter(c => c.percentage >= 80 && c.percentage < 100),
-    []);
+        campaigns.filter(c => c.percentage >= 80 && c.percentage < 100),
+    [campaigns]);
 
     return (
         <div className="pb-32 bg-white dark:bg-gray-950 min-h-screen">

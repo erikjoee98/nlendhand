@@ -1,0 +1,62 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  // Az url paramétert eltávolítjuk innen
+}
+
+enum DonationStatus {
+  pending
+  paid
+  failed
+  refunded
+}
+
+model Campaign {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  image       String
+  category    String
+  author      String
+  verified    Boolean   @default(false)
+  goalCents   Int
+  raisedCents Int       @default(0)
+  isActive    Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  donations Donation[]
+
+  @@index([isActive, createdAt])
+}
+
+model SuccessStory {
+  id         String   @id
+  name       String
+  detail     String
+  fullStory  String
+  img        String
+  highlights Json
+  createdAt  DateTime @default(now())
+}
+
+model Donation {
+  id                     String          @id @default(cuid())
+  campaignId             String
+  amountCents            Int
+  currency               String          @default("usd")
+  stripeSessionId        String?         @unique
+  stripePaymentIntentId  String?
+  status                 DonationStatus  @default(pending)
+  donorEmail             String?
+  createdAt              DateTime        @default(now())
+
+  campaign Campaign @relation(fields: [campaignId], references: [id])
+
+  @@index([campaignId])
+  @@index([createdAt])
+}

@@ -3,14 +3,13 @@
 
 import React from "react";
 import Link from "next/link";
-import { MOCK_SUCCESS_STORIES } from "../../lib/mockData";
+import type { SuccessStory } from "../../types";
 
 interface SuccessStoryDetailScreenProps {
-    storyId: string | null;
+    story: SuccessStory;
 }
 
-const SuccessStoryDetailScreen: React.FC<SuccessStoryDetailScreenProps> = ({ storyId }) => {
-    const story = MOCK_SUCCESS_STORIES.find(s => s.id === storyId) || MOCK_SUCCESS_STORIES[0];
+const SuccessStoryDetailScreen: React.FC<SuccessStoryDetailScreenProps> = ({ story }) => {
 
     return (
         <div className="bg-white dark:bg-gray-950 min-h-screen pb-40">
@@ -30,7 +29,11 @@ const SuccessStoryDetailScreen: React.FC<SuccessStoryDetailScreenProps> = ({ sto
 
             {/* Hero Image */}
             <div className="w-full aspect-square relative bg-slate-100">
-                <img src={story.img} alt={story.name} className="w-full h-full object-cover" />
+                {story.img ? (
+                    <img src={story.img} alt={story.name} className="w-full h-full object-cover" />
+                ) : (
+                    <div className="w-full h-full bg-slate-200 dark:bg-gray-800" />
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-950 via-transparent to-transparent"></div>
             </div>
 
@@ -55,7 +58,7 @@ const SuccessStoryDetailScreen: React.FC<SuccessStoryDetailScreenProps> = ({ sto
                 <section className="mb-12">
                     <h3 className="text-sm font-black uppercase tracking-[0.2em] text-slate-400 mb-6">Impact Highlights</h3>
                     <div className="grid grid-cols-1 gap-4">
-                        {story.highlights.map((h, i) => (
+                        {(Array.isArray(story.highlights) ? story.highlights : []).map((h, i) => (
                             <div key={i} className="bg-slate-50 dark:bg-gray-900 rounded-3xl p-6 border border-slate-100 dark:border-slate-800">
                                 <p className="text-[10px] font-black uppercase tracking-widest text-primary mb-4">{h.label}</p>
                                 <div className="flex items-center justify-between gap-4">

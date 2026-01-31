@@ -3,8 +3,7 @@
 
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
-import { Milestone } from "../../types";
-import { MOCK_CAMPAIGNS } from "../../lib/mockData";
+import { Milestone, Campaign } from "../../types";
 import { formatNumber } from "../../lib/format";
 import CampaignHero from "./CampaignHero";
 import CampaignProgress from "./CampaignProgress";
@@ -15,15 +14,11 @@ import CampaignWall from "./CampaignWall";
 import CampaignDonateBar from "./CampaignDonateBar";
 
 interface DetailScreenProps {
-    campaignId: string | null;
+    campaign: Campaign;
 }
 
-const DetailScreen: React.FC<DetailScreenProps> = ({ campaignId }) => {
+const DetailScreen: React.FC<DetailScreenProps> = ({ campaign }) => {
     const [activeTab, setActiveTab] = useState("story");
-
-    const campaign = useMemo(() => {
-        return MOCK_CAMPAIGNS.find(c => c.id === campaignId) || MOCK_CAMPAIGNS[0];
-    }, [campaignId]);
 
     const milestones: Milestone[] = useMemo(() => [
         {

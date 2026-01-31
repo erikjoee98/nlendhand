@@ -1,5 +1,7 @@
 import HomeScreen from "./components/HomeScreen";
+import { getActiveCampaigns } from "../lib/data";
 
-export default function Home() {
-  return <HomeScreen />;
+export default async function Home() {
+  const campaigns = await getActiveCampaigns();
+  return <HomeScreen campaigns={campaigns} />;
 }

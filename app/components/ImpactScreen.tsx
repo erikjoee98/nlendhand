@@ -3,9 +3,14 @@
 
 import React from "react";
 import Link from "next/link";
-import { MOCK_SUCCESS_STORIES } from "../../lib/mockData";
+import type { SuccessStory } from "../../types";
+import ProofOfProgress from "./ProofOfProgress";
 
-const ImpactScreen: React.FC = () => {
+interface ImpactScreenProps {
+    stories: SuccessStory[];
+}
+
+const ImpactScreen: React.FC<ImpactScreenProps> = ({ stories }) => {
     return (
         <div className="pb-32 bg-white dark:bg-gray-950">
             {/* Header - Reusing Trust/Home pattern */}
@@ -31,25 +36,7 @@ const ImpactScreen: React.FC = () => {
                     </p>
                 </section>
 
-                {/* Global Stats - Reusing Home/Trust Card patterns */}
-                <section className="py-8 px-4">
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
-                            <p className="text-[10px] font-black text-slate-400 uppercase mb-2">Patients Supported</p>
-                            <p className="text-2xl font-black tracking-tighter text-primary">12,482</p>
-                            <div className="mt-4 flex items-center gap-1 text-[10px] text-success font-black">
-                                <span className="material-symbols-outlined text-xs">check_circle</span> 100% Verified
-                            </div>
-                        </div>
-                        <div className="bg-white dark:bg-gray-900 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-800">
-                            <p className="text-[10px] font-black text-slate-400 uppercase mb-2">Rehab Completion</p>
-                            <p className="text-2xl font-black tracking-tighter text-primary">94.8%</p>
-                            <div className="mt-4 flex items-center gap-1 text-[10px] text-primary font-black">
-                                <span className="material-symbols-outlined text-xs">star</span> High Success
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <ProofOfProgress />
 
                 {/* Impact Roadmap - Reusing Detail Milestones pattern */}
                 <section className="px-8 py-10 bg-slate-50/50 dark:bg-gray-900/30">
@@ -118,14 +105,18 @@ const ImpactScreen: React.FC = () => {
                         <button className="text-primary text-sm font-bold">Read All</button>
                     </div>
                     <div className="flex overflow-x-auto gap-6 px-6 no-scrollbar pb-8">
-                        {MOCK_SUCCESS_STORIES.map((story, idx) => (
+                        {stories.map((story, idx) => (
                             <Link
                                 key={idx} 
                                 href={`/impact/story/${story.id}`}
                                 className="block shrink-0 w-64 group active:scale-95 transition-all cursor-pointer"
                             >
                                 <div className="aspect-[3/4] rounded-3xl overflow-hidden relative shadow-lg">
+                                {story.img ? (
                                     <img src={story.img} alt={story.name} className="w-full h-full object-cover" />
+                                ) : (
+                                    <div className="w-full h-full bg-slate-200 dark:bg-gray-800" />
+                                )}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
                                     <div className="absolute bottom-4 left-4 right-4 text-white">
                                         <p className="font-black text-lg">{story.name}</p>

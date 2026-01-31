@@ -3,16 +3,24 @@
 
 import React from "react";
 import Link from "next/link";
-import { MOCK_CAMPAIGNS } from "../../lib/mockData";
 import { formatNumber } from "../../lib/format";
 import { useDonateSelector } from "./AppShell";
+import type { Campaign } from "../../types";
 
-const HomeScreen: React.FC = () => {
+interface HomeScreenProps {
+  campaigns: Campaign[];
+}
+
+const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
   const { openDonateSelector } = useDonateSelector();
 
+  if (campaigns.length === 0) {
+    return null;
+  }
+
   // Curated logic for the home page
-  const featuredCampaign = MOCK_CAMPAIGNS.find((c) => c.id === "1") || MOCK_CAMPAIGNS[0];
-  const urgentNeeds = MOCK_CAMPAIGNS.filter(
+  const featuredCampaign = campaigns.find((c) => c.id === "1") || campaigns[0];
+  const urgentNeeds = campaigns.filter(
     (c) => c.id !== featuredCampaign.id && c.percentage < 100
   ).slice(0, 2);
 

@@ -1,8 +1,9 @@
 
 "use client";
 
-import React from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import type { Campaign } from "../../types";
 
 interface DonateSelectorProps {
     isOpen: boolean;
@@ -10,8 +11,6 @@ interface DonateSelectorProps {
 }
 
 const DonateSelector: React.FC<DonateSelectorProps> = ({ isOpen, onClose }) => {
-    if (!isOpen) return null;
-
     const options = [
         {
             id: 'urgent',
@@ -47,6 +46,62 @@ const DonateSelector: React.FC<DonateSelectorProps> = ({ isOpen, onClose }) => {
         }
     ];
 
+    const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+    const [campaigns, setCampaigns] = useState<Campaign[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+    const selectedOption = useMemo(
+        () => options.find((option) => option.id === selectedCategory) || null,
+        [options, selectedCategory]
+    );
+
+    const resetSelection = useCallback(() => {
+        setSelectedCategory(null);
+        setCampaigns([]);
+        setErrorMessage(null);
+    }, []);
+
+    useEffect(() => {
+        if (!isOpen) return;
+        if (!selectedCategory) return;
+        let isActive = true;
+        setIsLoading(true);
+        setErrorMessage(null);
+        fetch(`/api/campaigns?category=${encodeURIComponent(selectedCategory)}`)
+            .then(async (response) => {
+                if (!response.ok) {
+                    const text = await response.text().catch(() => "");
+                    throw new Error(text || "Failed to load campaigns.");
+                }
+                return response.json() as Promise<{ campaigns: Campaign[] }>;
+            })
+            .then((data) => {
+                if (!isActive) return;
+                setCampaigns(data.campaigns || []);
+            })
+            .catch((error) => {
+                if (!isActive) return;
+                setErrorMessage(
+                    error instanceof Error ? error.message : "Failed to load campaigns."
+                );
+            })
+            .finally(() => {
+                if (!isActive) return;
+                setIsLoading(false);
+            });
+        return () => {
+            isActive = false;
+        };
+    }, [isOpen, selectedCategory]);
+
+    useEffect(() => {
+        if (isOpen) return;
+        resetSelection();
+    }, [isOpen, resetSelection]);
+
+    if (!isOpen) return null;
+
     return (
         <div className="fixed inset-0 z-[100] flex items-end justify-center px-4 pb-4">
             {/* Backdrop */}
@@ -59,7 +114,20 @@ const DonateSelector: React.FC<DonateSelectorProps> = ({ isOpen, onClose }) => {
             <div className="relative w-full max-w-md bg-white dark:bg-gray-950 rounded-[2.5rem] shadow-2xl overflow-hidden animate-in slide-in-from-bottom-8 duration-300">
                 <div className="px-8 pt-8 pb-4">
                     <div className="flex items-center justify-between mb-2">
-                        <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white italic font-serif">Support Growth.</h2>
+                        <div className="flex items-center gap-2">
+                            {selectedCategory && (
+                                <button
+                                    onClick={resetSelection}
+                                    className="size-8 rounded-full bg-slate-100 dark:bg-gray-800 flex items-center justify-center text-slate-500"
+                                    aria-label="Back"
+                                >
+                                    <span className="material-symbols-outlined text-sm">arrow_back_ios</span>
+                                </button>
+                            )}
+                            <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white italic font-serif">
+                                Support Growth.
+                            </h2>
+                        </div>
                         <button 
                             onClick={onClose}
                             className="size-8 rounded-full bg-slate-100 dark:bg-gray-800 flex items-center justify-center text-slate-400"
@@ -67,27 +135,74 @@ const DonateSelector: React.FC<DonateSelectorProps> = ({ isOpen, onClose }) => {
                             <span className="material-symbols-outlined text-sm">close</span>
                         </button>
                     </div>
-                    <p className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-6">How would you like to direct your impact today?</p>
+                    <p className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-6">
+                        {selectedOption
+                            ? `Choose a ${selectedOption.title.toLowerCase()} campaign to support.`
+                            : "How would you like to direct your impact today?"}
+                    </p>
                     
-                    <div className="grid grid-cols-1 gap-3">
-                        {options.map((option) => (
-                            <Link
-                                key={option.id}
-                                href={`/donate?category=${option.id}`}
-                                onClick={onClose}
-                                className="flex items-center gap-4 p-4 rounded-3xl border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:bg-slate-50 dark:hover:bg-gray-900 transition-all active:scale-[0.98] text-left group"
-                            >
-                                <div className={`size-12 shrink-0 rounded-2xl ${option.bg} flex items-center justify-center ${option.color}`}>
-                                    <span className="material-symbols-outlined text-2xl">{option.icon}</span>
+                    {!selectedCategory && (
+                        <div className="grid grid-cols-1 gap-3">
+                            {options.map((option) => (
+                                <button
+                                    key={option.id}
+                                    onClick={() => setSelectedCategory(option.id)}
+                                    className="flex items-center gap-4 p-4 rounded-3xl border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:bg-slate-50 dark:hover:bg-gray-900 transition-all active:scale-[0.98] text-left group"
+                                >
+                                    <div className={`size-12 shrink-0 rounded-2xl ${option.bg} flex items-center justify-center ${option.color}`}>
+                                        <span className="material-symbols-outlined text-2xl">{option.icon}</span>
+                                    </div>
+                                    <div className="flex-1">
+                                        <h4 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">{option.title}</h4>
+                                        <p className="text-[11px] text-slate-400 font-medium leading-tight">{option.desc}</p>
+                                    </div>
+                                    <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+                                </button>
+                            ))}
+                        </div>
+                    )}
+
+                    {selectedCategory && (
+                        <div className="grid grid-cols-1 gap-3">
+                            {isLoading && (
+                                <div className="text-sm text-slate-400 font-medium">Loading campaigns...</div>
+                            )}
+                            {!isLoading && errorMessage && (
+                                <div className="text-sm text-red-500 font-medium">{errorMessage}</div>
+                            )}
+                            {!isLoading && !errorMessage && campaigns.length === 0 && (
+                                <div className="text-sm text-slate-400 font-medium">
+                                    No active campaigns available right now.
                                 </div>
-                                <div className="flex-1">
-                                    <h4 className="text-sm font-black text-slate-900 dark:text-white uppercase tracking-tight">{option.title}</h4>
-                                    <p className="text-[11px] text-slate-400 font-medium leading-tight">{option.desc}</p>
-                                </div>
-                                <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
-                            </Link>
-                        ))}
-                    </div>
+                            )}
+                            {!isLoading &&
+                                !errorMessage &&
+                                campaigns.map((campaign) => (
+                                    <Link
+                                        key={campaign.id}
+                                        href={`/donate?campaignId=${campaign.id}`}
+                                        onClick={onClose}
+                                        className="flex items-center gap-4 p-4 rounded-3xl border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:bg-slate-50 dark:hover:bg-gray-900 transition-all active:scale-[0.98] text-left group"
+                                    >
+                                        <div
+                                            className="size-14 shrink-0 rounded-2xl bg-center bg-cover shadow-sm"
+                                            style={{ backgroundImage: `url(${campaign.image})` }}
+                                        />
+                                        <div className="flex-1 min-w-0">
+                                            <h4 className="text-sm font-black text-slate-900 dark:text-white truncate">
+                                                {campaign.title}
+                                            </h4>
+                                            <p className="text-[11px] text-slate-400 font-medium leading-tight line-clamp-2">
+                                                {campaign.description}
+                                            </p>
+                                        </div>
+                                        <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">
+                                            chevron_right
+                                        </span>
+                                    </Link>
+                                ))}
+                        </div>
+                    )}
 
                     <div className="mt-8 pb-4">
                         <button 
