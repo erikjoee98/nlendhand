@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "../generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { MOCK_CAMPAIGNS, MOCK_SUCCESS_STORIES } from "../lib/mockData";
 
