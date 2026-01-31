@@ -1,4 +1,5 @@
 import { getActiveCampaigns } from "../../../lib/data";
+import type { Campaign } from "../../../types";
 
 const categoryMap: Record<string, string> = {
   mobility: "Mobility",
@@ -16,7 +17,8 @@ export async function GET(request: Request) {
   }
   const mappedCategory = categoryMap[categoryParam] || categoryParam;
   const filtered = campaigns.filter(
-    (campaign) => campaign.category === mappedCategory && campaign.percentage < 100
+    (campaign: Campaign) =>
+      campaign.category === mappedCategory && campaign.percentage < 100
   );
   return Response.json({ campaigns: filtered });
 }
