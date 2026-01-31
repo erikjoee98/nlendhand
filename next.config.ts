@@ -1,8 +1,12 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    turbopack: false, // Disable Turbopack temporarily
+    serverExternalPackages: ['@prisma/client', 'pg'],
+    turbo: {
+      resolveAlias: {
+        // This helps Turbopack find the generated client files 
+        // that your Better-Auth and Prisma lib are looking for.
+        '@prisma/client': './node_modules/@prisma/client',
+      },
+    },
   },
 };
-
-module.exports = nextConfig;
