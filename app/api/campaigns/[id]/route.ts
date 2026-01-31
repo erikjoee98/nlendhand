@@ -9,6 +9,9 @@ interface RouteContext {
 
 export async function GET(_request: Request, context: RouteContext) {
   const { id } = await context.params;
+  if (!id) {
+    return Response.json({ error: "Missing id." }, { status: 400 });
+  }
   const campaign = await getCampaignById(id);
   if (!campaign) {
     return Response.json({ error: "Not found." }, { status: 404 });
