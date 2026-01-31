@@ -1,11 +1,12 @@
 import { getCampaignById } from "../../../../lib/data";
 
 interface RouteContext {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export async function GET(_request: Request, context: RouteContext) {
-  const campaign = await getCampaignById(context.params.id);
+  const { id } = await context.params;
+  const campaign = await getCampaignById(id);
   if (!campaign) {
     return Response.json({ error: "Not found." }, { status: 404 });
   }
