@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { prisma } from "../../../lib/db";
+import { getPrisma } from "../../../lib/db";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -13,6 +13,7 @@ export async function POST(request: Request) {
   }
 
   const stripe = new Stripe(stripeSecretKey);
+  const prisma = getPrisma();
   const signature = request.headers.get("stripe-signature");
   if (!signature) {
     return Response.json({ error: "Missing signature." }, { status: 400 });

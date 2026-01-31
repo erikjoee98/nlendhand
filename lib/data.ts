@@ -1,5 +1,5 @@
 import type { Campaign, SuccessStory } from "../types";
-import { prisma } from "./db";
+import { getPrisma } from "./db";
 
 const mapCampaign = (campaign: {
   id: string;
@@ -58,6 +58,7 @@ const mapSuccessStory = (story: {
 };
 
 export async function getActiveCampaigns() {
+  const prisma = getPrisma();
   const campaigns = await prisma.campaign.findMany({
     where: { isActive: true },
     orderBy: [{ createdAt: "desc" }],
@@ -66,11 +67,13 @@ export async function getActiveCampaigns() {
 }
 
 export async function getCampaignById(id: string) {
+  const prisma = getPrisma();
   const campaign = await prisma.campaign.findUnique({ where: { id } });
   return campaign ? mapCampaign(campaign) : null;
 }
 
 export async function getSuccessStories() {
+  const prisma = getPrisma();
   const stories = await prisma.successStory.findMany({
     orderBy: [{ createdAt: "desc" }],
   });
@@ -78,6 +81,7 @@ export async function getSuccessStories() {
 }
 
 export async function getSuccessStoryById(id: string) {
+  const prisma = getPrisma();
   const story = await prisma.successStory.findUnique({ where: { id } });
   return story ? mapSuccessStory(story) : null;
 }

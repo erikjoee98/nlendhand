@@ -1,9 +1,10 @@
-import { prisma } from "../../../lib/db";
+import { getPrisma } from "../../../lib/db";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
+  const prisma = getPrisma();
   const [patientsSupported, totals] = await Promise.all([
     prisma.campaign.count({
       where: {

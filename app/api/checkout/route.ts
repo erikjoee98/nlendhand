@@ -1,5 +1,5 @@
 import Stripe from "stripe";
-import { prisma } from "../../../lib/db";
+import { getPrisma } from "../../../lib/db";
 
 export const runtime = "nodejs";
 
@@ -18,6 +18,7 @@ export async function POST(request: Request) {
   }
 
   const stripe = new Stripe(stripeSecretKey);
+  const prisma = getPrisma();
 
   let payload: CheckoutRequest | null = null;
 
