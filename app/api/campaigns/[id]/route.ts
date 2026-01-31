@@ -1,5 +1,8 @@
 import { getCampaignById } from "../../../../lib/data";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 interface RouteContext {
   params: Promise<{ id: string }>;
 }
