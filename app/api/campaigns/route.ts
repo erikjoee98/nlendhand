@@ -1,6 +1,9 @@
 import { getActiveCampaigns } from "../../../lib/data";
 import type { Campaign } from "../../../types";
 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
+
 const categoryMap: Record<string, string> = {
   mobility: "Mobility",
   emergency: "Emergency",
