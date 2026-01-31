@@ -3,14 +3,6 @@ import { MOCK_CAMPAIGNS } from "../../../lib/mockData";
 
 export const runtime = "nodejs";
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-
-if (!stripeSecretKey) {
-  throw new Error("STRIPE_SECRET_KEY is not set.");
-}
-
-const stripe = new Stripe(stripeSecretKey);
-
 type CheckoutRequest = {
   campaignId: string;
   amount: number;
@@ -18,6 +10,16 @@ type CheckoutRequest = {
 };
 
 export async function POST(request: Request) {
+  const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+  if (!stripeSecretKey) {
+    return Response.json(
+      { error: "STRIPE_SECRET_KEY is not set." },
+      { status: 500 }
+    );
+  }
+
+  const stripe = new Stripe(stripeSecretKey);
+
   let payload: CheckoutRequest | null = null;
 
   try {
