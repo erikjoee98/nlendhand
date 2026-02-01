@@ -4,6 +4,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import type { Campaign } from "../../types";
+import { formatNumber } from "../../lib/format";
 
 interface DonateSelectorProps {
     isOpen: boolean;
@@ -14,32 +15,32 @@ const DonateSelector: React.FC<DonateSelectorProps> = ({ isOpen, onClose }) => {
     const options = [
         {
             id: 'urgent',
-            title: 'Urgent Needs',
-            desc: 'Fund cases with immediate deadlines.',
+            title: 'Priority Initiatives',
+            desc: 'Accelerate programs that address urgent care gaps.',
             icon: 'priority_high',
             color: 'text-red-500',
             bg: 'bg-red-50'
         },
         {
             id: 'mobility',
-            title: 'Mobility Fund',
-            desc: 'Wheelchairs, exoskeletons, and accessibility.',
+            title: 'Mobility Innovation',
+            desc: 'Equipment and assistive technology for mobility access.',
             icon: 'accessible',
             color: 'text-primary',
             bg: 'bg-primary/5'
         },
         {
             id: 'emergency',
-            title: 'Emergency Care',
-            desc: 'Post-trauma recovery and critical surgeries.',
+            title: 'Critical Care',
+            desc: 'Essential equipment and response readiness programs.',
             icon: 'medical_services',
             color: 'text-success',
             bg: 'bg-success/5'
         },
         {
             id: 'smart',
-            title: 'Smart Allocation',
-            desc: 'Let our experts direct funds where needed most.',
+            title: 'Strategic Allocation',
+            desc: 'Direct contributions to the highest‑impact initiatives.',
             icon: 'psychology',
             color: 'text-purple-500',
             bg: 'bg-purple-50'
@@ -72,7 +73,7 @@ const DonateSelector: React.FC<DonateSelectorProps> = ({ isOpen, onClose }) => {
             .then(async (response) => {
                 if (!response.ok) {
                     const text = await response.text().catch(() => "");
-                    throw new Error(text || "Failed to load campaigns.");
+                    throw new Error(text || "Failed to load initiatives.");
                 }
                 return response.json() as Promise<{ campaigns: Campaign[] }>;
             })
@@ -83,7 +84,7 @@ const DonateSelector: React.FC<DonateSelectorProps> = ({ isOpen, onClose }) => {
             .catch((error) => {
                 if (!isActive) return;
                 setErrorMessage(
-                    error instanceof Error ? error.message : "Failed to load campaigns."
+                    error instanceof Error ? error.message : "Failed to load initiatives."
                 );
             })
             .finally(() => {
@@ -124,8 +125,8 @@ const DonateSelector: React.FC<DonateSelectorProps> = ({ isOpen, onClose }) => {
                                     <span className="material-symbols-outlined text-sm">arrow_back_ios</span>
                                 </button>
                             )}
-                            <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white italic font-serif">
-                                Support Growth.
+                        <h2 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white italic font-serif">
+                                Support Progress.
                             </h2>
                         </div>
                         <button 
@@ -137,8 +138,8 @@ const DonateSelector: React.FC<DonateSelectorProps> = ({ isOpen, onClose }) => {
                     </div>
                     <p className="text-slate-500 dark:text-slate-400 text-sm font-medium mb-6">
                         {selectedOption
-                            ? `Choose a ${selectedOption.title.toLowerCase()} campaign to support.`
-                            : "How would you like to direct your impact today?"}
+                            ? `Choose a ${selectedOption.title.toLowerCase()} initiative to support.`
+                            : "How would you like to direct your contribution today?"}
                     </p>
                     
                     {!selectedCategory && (
@@ -163,16 +164,16 @@ const DonateSelector: React.FC<DonateSelectorProps> = ({ isOpen, onClose }) => {
                     )}
 
                     {selectedCategory && (
-                        <div className="grid grid-cols-1 gap-3">
+                        <div className="grid grid-cols-1 gap-3 max-h-[60vh] overflow-y-auto pr-1">
                             {isLoading && (
-                                <div className="text-sm text-slate-400 font-medium">Loading campaigns...</div>
+                                <div className="text-sm text-slate-400 font-medium">Loading initiatives...</div>
                             )}
                             {!isLoading && errorMessage && (
                                 <div className="text-sm text-red-500 font-medium">{errorMessage}</div>
                             )}
                             {!isLoading && !errorMessage && campaigns.length === 0 && (
                                 <div className="text-sm text-slate-400 font-medium">
-                                    No active campaigns available right now.
+                                    No active initiatives available right now.
                                 </div>
                             )}
                             {!isLoading &&
@@ -182,23 +183,41 @@ const DonateSelector: React.FC<DonateSelectorProps> = ({ isOpen, onClose }) => {
                                         key={campaign.id}
                                         href={`/donate?campaignId=${campaign.id}`}
                                         onClick={onClose}
-                                        className="flex items-center gap-4 p-4 rounded-3xl border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:bg-slate-50 dark:hover:bg-gray-900 transition-all active:scale-[0.98] text-left group"
+                                        className="flex flex-col gap-4 p-4 rounded-3xl border border-slate-100 dark:border-slate-800 hover:border-primary/30 hover:bg-slate-50 dark:hover:bg-gray-900 transition-all active:scale-[0.98] text-left group"
                                     >
-                                        <div
-                                            className="size-14 shrink-0 rounded-2xl bg-center bg-cover shadow-sm"
-                                            style={{ backgroundImage: `url(${campaign.image})` }}
-                                        />
-                                        <div className="flex-1 min-w-0">
-                                            <h4 className="text-sm font-black text-slate-900 dark:text-white truncate">
-                                                {campaign.title}
-                                            </h4>
-                                            <p className="text-[11px] text-slate-400 font-medium leading-tight line-clamp-2">
-                                                {campaign.description}
-                                            </p>
+                                        <div className="flex items-center gap-4">
+                                            <div
+                                                className="size-14 shrink-0 rounded-2xl bg-center bg-cover shadow-sm"
+                                                style={{ backgroundImage: `url(${campaign.image})` }}
+                                            />
+                                            <div className="flex-1 min-w-0">
+                                                <h4 className="text-sm font-black text-slate-900 dark:text-white truncate">
+                                                    {campaign.title}
+                                                </h4>
+                                                <p className="text-[11px] text-slate-400 font-medium leading-tight line-clamp-2">
+                                                    {campaign.description}
+                                                </p>
+                                            </div>
+                                            <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">
+                                                chevron_right
+                                            </span>
                                         </div>
-                                        <span className="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">
-                                            chevron_right
-                                        </span>
+                                        <div className="space-y-2">
+                                            <div className="text-[10px] font-bold text-primary">
+                                                ${formatNumber(campaign.raised)} initial capital committed
+                                            </div>
+                                            <div className="h-1.5 w-full bg-slate-100 dark:bg-gray-800 rounded-full overflow-hidden">
+                                                <div className="h-full bg-primary" style={{ width: `${campaign.percentage}%` }}></div>
+                                            </div>
+                                            <div className="text-[10px] font-semibold text-slate-500">
+                                                ${formatNumber(Math.max(campaign.goal - campaign.raised, 0))} to unlock full program deployment
+                                            </div>
+                                            <div className="pt-2">
+                                                <span className="inline-flex items-center justify-center h-9 px-4 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-[11px] font-black uppercase tracking-widest">
+                                                    Contribute
+                                                </span>
+                                            </div>
+                                        </div>
                                     </Link>
                                 ))}
                         </div>

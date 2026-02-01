@@ -15,15 +15,15 @@ export default async function SuccessPage({ searchParams }: SuccessPageProps) {
       <div className="max-w-md mx-auto text-center">
         <h1 className="text-3xl font-serif italic mb-4">Thank you.</h1>
         <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">
-          Your donation was successful.
+          Your contribution was successful.
         </p>
         {campaign && (
           <div className="mt-8 text-left bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 shadow-sm">
             <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">
-              Updated Campaign Total
+              Updated Initiative Total
             </p>
             <p className="text-lg font-bold text-slate-900 dark:text-white">
-              ${formatNumber(campaign.raised)} raised
+              ${formatNumber(campaign.raised)} initial capital committed
             </p>
             <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
               Goal ${formatNumber(campaign.goal)}

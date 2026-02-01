@@ -21,6 +21,7 @@ export interface Campaign {
     author?: string;
     authorImage?: string;
     verified?: boolean;
+    patientsSupported?: number;
 }
 
 export interface SuccessStory {

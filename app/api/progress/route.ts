@@ -1,26 +1,20 @@
 import { getPrisma } from "../../../lib/db";
+import { getTotalRaised } from "../../../lib/data";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
   const prisma = getPrisma();
-  const [patientsSupported, totals] = await Promise.all([
-    prisma.donation.count(),
-    prisma.campaign.aggregate({
-      _sum: {
-        raisedCents: true,
-        goalCents: true,
-      },
+  const [totalRaisedCents, activeInitiatives] = await Promise.all([
+    getTotalRaised(),
+    prisma.campaign.count({
+      where: { isActive: true },
     }),
   ]);
 
-  const totalRaised = totals._sum.raisedCents ?? 0;
-  const totalGoal = totals._sum.goalCents ?? 0;
-  const rehabCompletion = totalGoal > 0 ? (totalRaised / totalGoal) * 100 : 0;
-
   return Response.json({
-    patientsSupported,
-    rehabCompletion,
+    totalRaisedCents,
+    activeInitiatives,
   });
 }

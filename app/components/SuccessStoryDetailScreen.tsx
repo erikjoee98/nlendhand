@@ -93,7 +93,7 @@ const SuccessStoryDetailScreen: React.FC<SuccessStoryDetailScreenProps> = ({ sto
                         href="/explore"
                         className="w-full h-14 bg-primary text-white rounded-2xl font-black text-lg shadow-2xl shadow-primary/40 transition-transform active:scale-[0.98] flex items-center justify-center"
                     >
-                        Support another life
+                        Support another initiative
                     </Link>
                 </div>
             </div>

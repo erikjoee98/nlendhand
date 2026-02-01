@@ -20,7 +20,7 @@ const CampaignDonateBar: React.FC<CampaignDonateBarProps> = ({ donateHref }) => 
                     href={donateHref}
                     className="flex-1 h-14 bg-primary text-white rounded-2xl font-black text-lg shadow-2xl shadow-primary/40 flex items-center justify-center gap-3 transition-transform active:scale-[0.98]"
                 >
-                    Donate Now
+                    Contribute Now
                     <span className="material-symbols-outlined font-black">arrow_forward</span>
                 </Link>
             </div>

@@ -11,6 +11,7 @@ const mapCampaign = (campaign: {
   verified: boolean;
   goalCents: number;
   raisedCents: number;
+  patientsSupported?: number | null;
 }) => {
   const goal = campaign.goalCents / 100;
   const raised = campaign.raisedCents / 100;
@@ -30,6 +31,7 @@ const mapCampaign = (campaign: {
     goal,
     raised,
     percentage,
+    patientsSupported: campaign.patientsSupported ?? 0,
   };
 
   return mapped;
@@ -84,4 +86,14 @@ export async function getSuccessStoryById(id: string) {
   const prisma = getPrisma();
   const story = await prisma.successStory.findUnique({ where: { id } });
   return story ? mapSuccessStory(story) : null;
+}
+
+export async function getTotalRaised() {
+  const prisma = getPrisma();
+  const totals = await prisma.campaign.aggregate({
+    _sum: {
+      raisedCents: true,
+    },
+  });
+  return totals._sum.raisedCents ?? 0;
 }

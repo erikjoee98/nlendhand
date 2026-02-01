@@ -13,7 +13,7 @@ const CampaignStory: React.FC<CampaignStoryProps> = ({ description }) => {
             <p className="text-slate-600 dark:text-slate-300 font-medium leading-relaxed">
                 {description} 
                 <br /><br />
-                This campaign aims to cover the full costs of specialized recovery. Every donation brings us one step closer to the final goal.
+                This initiative supports specialized medical equipment and recovery resources. Every contribution advances the program toward its goal.
             </p>
         </section>
     );
