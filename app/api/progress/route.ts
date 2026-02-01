@@ -6,11 +6,7 @@ export const dynamic = "force-dynamic";
 export async function GET() {
   const prisma = getPrisma();
   const [patientsSupported, totals] = await Promise.all([
-    prisma.campaign.count({
-      where: {
-        OR: [{ isActive: true }, { raisedCents: { gt: 0 } }],
-      },
-    }),
+    prisma.donation.count(),
     prisma.campaign.aggregate({
       _sum: {
         raisedCents: true,

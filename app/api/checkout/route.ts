@@ -59,6 +59,12 @@ export async function POST(request: Request) {
     mode: "payment",
     currency: "usd",
     payment_method_types: ["card"],
+    payment_intent_data: {
+      metadata: {
+        campaignId: campaign.id,
+        donationId: donation.id,
+      },
+    },
     line_items: [
       {
         quantity: 1,

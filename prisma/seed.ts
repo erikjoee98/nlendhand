@@ -39,6 +39,7 @@ async function main() {
         verified: Boolean(campaign.verified),
         goalCents,
         raisedCents,
+        patientsSupported: 0,
         isActive,
       },
       create: {
@@ -51,6 +52,7 @@ async function main() {
         verified: Boolean(campaign.verified),
         goalCents,
         raisedCents,
+        patientsSupported: 0,
         isActive,
       },
     });
