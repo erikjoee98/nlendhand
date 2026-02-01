@@ -33,7 +33,7 @@ const playfair = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "LendAHand - Support Recovery",
+  title: "Lumira",
   description: "Support recovery through transparent, direct impact giving.",
 };
 

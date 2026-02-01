@@ -29,7 +29,7 @@ export default function AboutPage() {
           <section className="space-y-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-gray-900/40 p-5 shadow-sm shadow-slate-900/5">
             <h2 className="text-xs font-black uppercase tracking-widest text-slate-400">Mission</h2>
             <p>
-              LendAHand is an independently operated medical initiative platform focused on funding high-impact
+              Lumira is an independently operated medical initiative platform focused on funding high-impact
               healthcare programs through structured capital deployment.
             </p>
             <p>

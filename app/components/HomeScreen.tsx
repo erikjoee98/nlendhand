@@ -39,7 +39,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                     <div className="text-primary flex size-8 items-center justify-center bg-primary/10 rounded-lg">
                         <span className="material-symbols-outlined text-lg">volunteer_activism</span>
                     </div>
-                    <h2 className="text-slate-900 dark:text-white text-base font-black tracking-tight">LendAHand</h2>
+                    <h2 className="text-slate-900 dark:text-white text-base font-black tracking-tight">Lumira</h2>
                 </div>
             </header>
 

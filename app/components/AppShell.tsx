@@ -65,7 +65,7 @@ const AppShell: React.FC<AppShellProps> = ({ children }) => {
                   <span className="material-symbols-outlined text-lg">health_and_safety</span>
                 </div>
                 <div>
-                  <p className="text-sm font-black text-slate-900 dark:text-white tracking-tight">LendAHand</p>
+                  <p className="text-sm font-black text-slate-900 dark:text-white tracking-tight">Lumira</p>
                   <p className="text-[10px] uppercase tracking-[0.2em] text-slate-400">Medical Initiatives</p>
                 </div>
               </Link>
