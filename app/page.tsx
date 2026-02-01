@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import HomeScreen from "./components/HomeScreen";
 import { getActiveCampaigns } from "../lib/data";
 
