@@ -130,6 +130,7 @@ exports.Prisma.CampaignScalarFieldEnum = {
   verified: 'verified',
   goalCents: 'goalCents',
   raisedCents: 'raisedCents',
+  patientsSupported: 'patientsSupported',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'

@@ -45,9 +45,12 @@ export async function POST(request: Request) {
       return Response.json({ received: true });
     }
 
+    const charges = (intent as Stripe.PaymentIntent & {
+      charges?: { data?: Stripe.Charge[] };
+    }).charges?.data ?? [];
     const donorEmail =
       intent.receipt_email ||
-      intent.charges?.data?.[0]?.billing_details?.email ||
+      charges?.[0]?.billing_details?.email ||
       null;
 
     if (donation.status === "paid") {

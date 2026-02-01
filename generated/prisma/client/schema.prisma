@@ -16,18 +16,19 @@ enum DonationStatus {
 }
 
 model Campaign {
-  id          String   @id @default(cuid())
-  title       String
-  description String
-  image       String
-  category    String
-  author      String
-  verified    Boolean  @default(false)
-  goalCents   Int
-  raisedCents Int      @default(0)
-  isActive    Boolean  @default(true)
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id                String   @id @default(cuid())
+  title             String
+  description       String
+  image             String
+  category          String
+  author            String
+  verified          Boolean  @default(false)
+  goalCents         Int
+  raisedCents       Int      @default(0)
+  patientsSupported Int      @default(0)
+  isActive          Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 
   donations Donation[]
 

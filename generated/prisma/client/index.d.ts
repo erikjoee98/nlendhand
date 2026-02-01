@@ -1108,11 +1108,13 @@ export namespace Prisma {
   export type CampaignAvgAggregateOutputType = {
     goalCents: number | null
     raisedCents: number | null
+    patientsSupported: number | null
   }
 
   export type CampaignSumAggregateOutputType = {
     goalCents: number | null
     raisedCents: number | null
+    patientsSupported: number | null
   }
 
   export type CampaignMinAggregateOutputType = {
@@ -1125,6 +1127,7 @@ export namespace Prisma {
     verified: boolean | null
     goalCents: number | null
     raisedCents: number | null
+    patientsSupported: number | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1140,6 +1143,7 @@ export namespace Prisma {
     verified: boolean | null
     goalCents: number | null
     raisedCents: number | null
+    patientsSupported: number | null
     isActive: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1155,6 +1159,7 @@ export namespace Prisma {
     verified: number
     goalCents: number
     raisedCents: number
+    patientsSupported: number
     isActive: number
     createdAt: number
     updatedAt: number
@@ -1165,11 +1170,13 @@ export namespace Prisma {
   export type CampaignAvgAggregateInputType = {
     goalCents?: true
     raisedCents?: true
+    patientsSupported?: true
   }
 
   export type CampaignSumAggregateInputType = {
     goalCents?: true
     raisedCents?: true
+    patientsSupported?: true
   }
 
   export type CampaignMinAggregateInputType = {
@@ -1182,6 +1189,7 @@ export namespace Prisma {
     verified?: true
     goalCents?: true
     raisedCents?: true
+    patientsSupported?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -1197,6 +1205,7 @@ export namespace Prisma {
     verified?: true
     goalCents?: true
     raisedCents?: true
+    patientsSupported?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -1212,6 +1221,7 @@ export namespace Prisma {
     verified?: true
     goalCents?: true
     raisedCents?: true
+    patientsSupported?: true
     isActive?: true
     createdAt?: true
     updatedAt?: true
@@ -1314,6 +1324,7 @@ export namespace Prisma {
     verified: boolean
     goalCents: number
     raisedCents: number
+    patientsSupported: number
     isActive: boolean
     createdAt: Date
     updatedAt: Date
@@ -1348,6 +1359,7 @@ export namespace Prisma {
     verified?: boolean
     goalCents?: boolean
     raisedCents?: boolean
+    patientsSupported?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1365,6 +1377,7 @@ export namespace Prisma {
     verified?: boolean
     goalCents?: boolean
     raisedCents?: boolean
+    patientsSupported?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1380,6 +1393,7 @@ export namespace Prisma {
     verified?: boolean
     goalCents?: boolean
     raisedCents?: boolean
+    patientsSupported?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -1395,12 +1409,13 @@ export namespace Prisma {
     verified?: boolean
     goalCents?: boolean
     raisedCents?: boolean
+    patientsSupported?: boolean
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CampaignOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "image" | "category" | "author" | "verified" | "goalCents" | "raisedCents" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["campaign"]>
+  export type CampaignOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "image" | "category" | "author" | "verified" | "goalCents" | "raisedCents" | "patientsSupported" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["campaign"]>
   export type CampaignInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     donations?: boolean | Campaign$donationsArgs<ExtArgs>
     _count?: boolean | CampaignCountOutputTypeDefaultArgs<ExtArgs>
@@ -1423,6 +1438,7 @@ export namespace Prisma {
       verified: boolean
       goalCents: number
       raisedCents: number
+      patientsSupported: number
       isActive: boolean
       createdAt: Date
       updatedAt: Date
@@ -1859,6 +1875,7 @@ export namespace Prisma {
     readonly verified: FieldRef<"Campaign", 'Boolean'>
     readonly goalCents: FieldRef<"Campaign", 'Int'>
     readonly raisedCents: FieldRef<"Campaign", 'Int'>
+    readonly patientsSupported: FieldRef<"Campaign", 'Int'>
     readonly isActive: FieldRef<"Campaign", 'Boolean'>
     readonly createdAt: FieldRef<"Campaign", 'DateTime'>
     readonly updatedAt: FieldRef<"Campaign", 'DateTime'>
@@ -4477,6 +4494,7 @@ export namespace Prisma {
     verified: 'verified',
     goalCents: 'goalCents',
     raisedCents: 'raisedCents',
+    patientsSupported: 'patientsSupported',
     isActive: 'isActive',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -4665,6 +4683,7 @@ export namespace Prisma {
     verified?: BoolFilter<"Campaign"> | boolean
     goalCents?: IntFilter<"Campaign"> | number
     raisedCents?: IntFilter<"Campaign"> | number
+    patientsSupported?: IntFilter<"Campaign"> | number
     isActive?: BoolFilter<"Campaign"> | boolean
     createdAt?: DateTimeFilter<"Campaign"> | Date | string
     updatedAt?: DateTimeFilter<"Campaign"> | Date | string
@@ -4681,6 +4700,7 @@ export namespace Prisma {
     verified?: SortOrder
     goalCents?: SortOrder
     raisedCents?: SortOrder
+    patientsSupported?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4700,6 +4720,7 @@ export namespace Prisma {
     verified?: BoolFilter<"Campaign"> | boolean
     goalCents?: IntFilter<"Campaign"> | number
     raisedCents?: IntFilter<"Campaign"> | number
+    patientsSupported?: IntFilter<"Campaign"> | number
     isActive?: BoolFilter<"Campaign"> | boolean
     createdAt?: DateTimeFilter<"Campaign"> | Date | string
     updatedAt?: DateTimeFilter<"Campaign"> | Date | string
@@ -4716,6 +4737,7 @@ export namespace Prisma {
     verified?: SortOrder
     goalCents?: SortOrder
     raisedCents?: SortOrder
+    patientsSupported?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -4739,6 +4761,7 @@ export namespace Prisma {
     verified?: BoolWithAggregatesFilter<"Campaign"> | boolean
     goalCents?: IntWithAggregatesFilter<"Campaign"> | number
     raisedCents?: IntWithAggregatesFilter<"Campaign"> | number
+    patientsSupported?: IntWithAggregatesFilter<"Campaign"> | number
     isActive?: BoolWithAggregatesFilter<"Campaign"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Campaign"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Campaign"> | Date | string
@@ -4893,6 +4916,7 @@ export namespace Prisma {
     verified?: boolean
     goalCents: number
     raisedCents?: number
+    patientsSupported?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -4909,6 +4933,7 @@ export namespace Prisma {
     verified?: boolean
     goalCents: number
     raisedCents?: number
+    patientsSupported?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -4925,6 +4950,7 @@ export namespace Prisma {
     verified?: BoolFieldUpdateOperationsInput | boolean
     goalCents?: IntFieldUpdateOperationsInput | number
     raisedCents?: IntFieldUpdateOperationsInput | number
+    patientsSupported?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4941,6 +4967,7 @@ export namespace Prisma {
     verified?: BoolFieldUpdateOperationsInput | boolean
     goalCents?: IntFieldUpdateOperationsInput | number
     raisedCents?: IntFieldUpdateOperationsInput | number
+    patientsSupported?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4957,6 +4984,7 @@ export namespace Prisma {
     verified?: boolean
     goalCents: number
     raisedCents?: number
+    patientsSupported?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -4972,6 +5000,7 @@ export namespace Prisma {
     verified?: BoolFieldUpdateOperationsInput | boolean
     goalCents?: IntFieldUpdateOperationsInput | number
     raisedCents?: IntFieldUpdateOperationsInput | number
+    patientsSupported?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -4987,6 +5016,7 @@ export namespace Prisma {
     verified?: BoolFieldUpdateOperationsInput | boolean
     goalCents?: IntFieldUpdateOperationsInput | number
     raisedCents?: IntFieldUpdateOperationsInput | number
+    patientsSupported?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5207,6 +5237,7 @@ export namespace Prisma {
     verified?: SortOrder
     goalCents?: SortOrder
     raisedCents?: SortOrder
+    patientsSupported?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5215,6 +5246,7 @@ export namespace Prisma {
   export type CampaignAvgOrderByAggregateInput = {
     goalCents?: SortOrder
     raisedCents?: SortOrder
+    patientsSupported?: SortOrder
   }
 
   export type CampaignMaxOrderByAggregateInput = {
@@ -5227,6 +5259,7 @@ export namespace Prisma {
     verified?: SortOrder
     goalCents?: SortOrder
     raisedCents?: SortOrder
+    patientsSupported?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5242,6 +5275,7 @@ export namespace Prisma {
     verified?: SortOrder
     goalCents?: SortOrder
     raisedCents?: SortOrder
+    patientsSupported?: SortOrder
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5250,6 +5284,7 @@ export namespace Prisma {
   export type CampaignSumOrderByAggregateInput = {
     goalCents?: SortOrder
     raisedCents?: SortOrder
+    patientsSupported?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -5835,6 +5870,7 @@ export namespace Prisma {
     verified?: boolean
     goalCents: number
     raisedCents?: number
+    patientsSupported?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5850,6 +5886,7 @@ export namespace Prisma {
     verified?: boolean
     goalCents: number
     raisedCents?: number
+    patientsSupported?: number
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5881,6 +5918,7 @@ export namespace Prisma {
     verified?: BoolFieldUpdateOperationsInput | boolean
     goalCents?: IntFieldUpdateOperationsInput | number
     raisedCents?: IntFieldUpdateOperationsInput | number
+    patientsSupported?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5896,6 +5934,7 @@ export namespace Prisma {
     verified?: BoolFieldUpdateOperationsInput | boolean
     goalCents?: IntFieldUpdateOperationsInput | number
     raisedCents?: IntFieldUpdateOperationsInput | number
+    patientsSupported?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
