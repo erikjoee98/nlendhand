@@ -35,6 +35,11 @@ const playfair = localFont({
 export const metadata: Metadata = {
   title: "Lumira",
   description: "Support recovery through transparent, direct impact giving.",
+  icons: {
+    icon: "/brand/lumira-mark.svg",
+    shortcut: "/brand/lumira-mark.svg",
+    apple: "/brand/lumira-mark.svg",
+  },
 };
 
 export default function RootLayout({

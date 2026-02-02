@@ -10,9 +10,9 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import DonateSelector from "./DonateSelector";
+import Image from "next/image";
 import Footer from "./Footer";
 
 type DonateSelectorContextValue = {
@@ -36,19 +36,15 @@ interface AppShellProps {
 }
 
 const AppShell: React.FC<AppShellProps> = ({ children }) => {
-  const [isDonateSelectorOpen, setIsDonateSelectorOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileHeaderVisible, setIsMobileHeaderVisible] = useState(true);
   const lastScrollY = useRef(0);
   const pathname = usePathname();
+  const router = useRouter();
 
   const openDonateSelector = useCallback(() => {
-    setIsDonateSelectorOpen(true);
-  }, []);
-
-  const closeDonateSelector = useCallback(() => {
-    setIsDonateSelectorOpen(false);
-  }, []);
+    router.push("/contribute");
+  }, [router]);
 
   const showMobileHeader = useMemo(() => {
     if (!pathname) return true;
@@ -105,11 +101,13 @@ const AppShell: React.FC<AppShellProps> = ({ children }) => {
             <header className={`lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800 transition-transform duration-300 ${isMobileHeaderVisible ? "translate-y-0" : "-translate-y-full"}`}>
               <div className="px-5 py-4 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2.5">
-                  <div className="size-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-                    <svg className="size-4" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
-                      <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" />
-                    </svg>
-                  </div>
+                  <Image
+                    src="/brand/lumira-mark.svg"
+                    alt="Lumira"
+                    width={28}
+                    height={28}
+                    className="size-7 rounded-lg"
+                  />
                   <p className="text-base font-black text-slate-900 dark:text-white tracking-tight">Lumira</p>
                 </Link>
                 <button
@@ -158,11 +156,13 @@ const AppShell: React.FC<AppShellProps> = ({ children }) => {
           <header className="hidden lg:block sticky top-0 z-40 bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800">
             <div className="px-8 xl:px-10 py-4 flex items-center justify-between">
               <Link href="/" className="flex items-center gap-3">
-                <div className="size-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
-                  <svg className="size-5" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true">
-                    <path d="M44 4H30.6666V17.3334H17.3334V30.6666H4V44H44V4Z" />
-                  </svg>
-                </div>
+                <Image
+                  src="/brand/lumira-mark.svg"
+                  alt="Lumira"
+                  width={36}
+                  height={36}
+                  className="size-9 rounded-xl"
+                />
                 <div>
                   <p className="text-sm font-black text-slate-900 dark:text-white tracking-tight">Lumira</p>
                   <p className="text-[10px] uppercase tracking-[0.2em] text-slate-400">Medical Initiatives</p>
@@ -196,10 +196,6 @@ const AppShell: React.FC<AppShellProps> = ({ children }) => {
             </div>
           </div>
           <Footer />
-        <DonateSelector
-          isOpen={isDonateSelectorOpen}
-          onClose={closeDonateSelector}
-        />
         </div>
       </div>
     </DonateSelectorContext.Provider>

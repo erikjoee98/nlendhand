@@ -13,28 +13,29 @@ interface DonateScreenProps {
     campaigns: Campaign[];
 }
 
+const CATEGORY_MAP: Record<string, string> = {
+    mobility: "Mobility",
+    emergency: "Emergency",
+    urgent: "Recovery",
+    smart: "Mobility",
+};
+
 const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, category, campaigns }) => {
     const [amount, setAmount] = useState<number>(50);
     const [selectedId, setSelectedId] = useState<string | null>(campaignId);
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [hasAcceptedTerms, setHasAcceptedTerms] = useState(false);
+    const [termsError, setTermsError] = useState(false);
 
     const hasCampaigns = campaigns.length > 0;
 
-    // Map intent categories to data categories
-    const categoryMap: Record<string, string> = {
-        mobility: "Mobility",
-        emergency: "Emergency",
-        urgent: "Recovery",
-        smart: "Mobility",
-    };
-
     const matchingCampaigns = useMemo(() => {
         if (!category) return [];
-        const targetCategory = categoryMap[category] || category;
+        const targetCategory = CATEGORY_MAP[category] || category;
         return campaigns.filter(c => c.category === targetCategory && c.percentage < 100);
     }, [category, campaigns]);
 
-    const categoryLabel = category ? categoryMap[category] || category : "";
+    const categoryLabel = category ? CATEGORY_MAP[category] || category : "";
 
     // Determine the active campaign to show checkout for
     const activeCampaign = useMemo(() => {
@@ -60,7 +61,12 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
 
     const handleDonate = async () => {
         if (isSubmitting) return;
+        if (!hasAcceptedTerms) {
+            setTermsError(true);
+            return;
+        }
         setIsSubmitting(true);
+        setTermsError(false);
         const payload = {
             campaignId: finalCampaign.id,
             amount: normalizedAmount,
@@ -244,13 +250,15 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                     {/* Custom Amount */}
                     <div className="px-4 py-3 lg:px-0">
                         <div className="flex w-full items-stretch rounded-xl overflow-hidden border border-[#cfd7e7] dark:border-gray-700 bg-white dark:bg-gray-900 focus-within:border-primary transition-colors">
-                            <div className="flex items-center justify-center pl-4 pr-2 text-gray-400">
+                            <div className="flex items-center justify-center pl-4 pr-3 text-gray-400 border-r border-slate-200 dark:border-slate-700">
                                 <span className="material-symbols-outlined text-lg">attach_money</span>
                             </div>
                             <input 
-                                className="flex w-full border-none bg-transparent h-14 text-[#0d121b] dark:text-white placeholder:text-[#4c669a] dark:placeholder:text-gray-500 p-0 text-base font-medium focus:ring-0" 
+                                className="no-spinner appearance-none flex w-full border-none bg-transparent h-14 text-[#0d121b] dark:text-white placeholder:text-[#4c669a] dark:placeholder:text-gray-500 px-3 text-base font-medium caret-slate-900 dark:caret-white focus:outline-none focus:ring-0 focus:shadow-none [box-shadow:none]" 
                                 placeholder="Enter custom amount" 
-                                type="number"
+                                type="text"
+                                inputMode="decimal"
+                                autoComplete="off"
                                 value={amount === 0 ? "" : amount}
                                 onChange={(e) => handleAmountChange(e.target.value)}
                             />
@@ -277,30 +285,30 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                     </section>
 
                     {/* Impact Breakdown */}
-                    <section className="px-4 pt-3 lg:px-0 lg:pt-6">
+                    <section className="px-4 pt-4 lg:px-0 lg:pt-6">
                         <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 shadow-sm">
                             <h3 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-4">Impact Breakdown</h3>
                             <div className="space-y-3">
-                                <div className="flex items-start gap-3">
-                                    <span className="material-symbols-outlined text-primary">medical_services</span>
-                                    <div>
-                                        <p className="text-sm font-semibold">Medical care</p>
-                                        <p className="text-xs text-slate-500 dark:text-slate-400">Direct treatment and clinical support.</p>
+                                <div className="rounded-xl border border-slate-100 dark:border-slate-800 p-3">
+                                    <div className="flex items-center gap-2">
+                                        <span className="material-symbols-outlined text-primary text-[18px] leading-none">medical_services</span>
+                                        <p className="text-[13px] font-bold text-slate-900 dark:text-white">Medical care</p>
                                     </div>
+                                    <p className="mt-1.5 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Direct treatment and clinical support.</p>
                                 </div>
-                                <div className="flex items-start gap-3">
-                                    <span className="material-symbols-outlined text-primary">prosthetics</span>
-                                    <div>
-                                        <p className="text-sm font-semibold">Equipment</p>
-                                        <p className="text-xs text-slate-500 dark:text-slate-400">Mobility devices and recovery tools.</p>
+                                <div className="rounded-xl border border-slate-100 dark:border-slate-800 p-3">
+                                    <div className="flex items-center gap-2">
+                                        <span className="material-symbols-outlined text-primary text-[18px] leading-none">biotech</span>
+                                        <p className="text-[13px] font-bold text-slate-900 dark:text-white">Equipment</p>
                                     </div>
+                                    <p className="mt-1.5 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Mobility devices and recovery tools.</p>
                                 </div>
-                                <div className="flex items-start gap-3">
-                                    <span className="material-symbols-outlined text-primary">local_shipping</span>
-                                    <div>
-                                        <p className="text-sm font-semibold">Transport</p>
-                                        <p className="text-xs text-slate-500 dark:text-slate-400">Access to appointments and rehab.</p>
+                                <div className="rounded-xl border border-slate-100 dark:border-slate-800 p-3">
+                                    <div className="flex items-center gap-2">
+                                        <span className="material-symbols-outlined text-primary text-[18px] leading-none">local_shipping</span>
+                                        <p className="text-[13px] font-bold text-slate-900 dark:text-white">Transport</p>
                                     </div>
+                                    <p className="mt-1.5 text-xs text-slate-500 dark:text-slate-400 leading-relaxed">Access to appointments and rehab.</p>
                                 </div>
                             </div>
                         </div>
@@ -331,32 +339,7 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                         </div>
                     </section>
 
-                    {/* FAQ */}
-                    <section className="px-4 pt-3 pb-16 lg:px-0 lg:pt-6">
-                        <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 shadow-sm">
-                            <h3 className="text-sm font-black uppercase tracking-widest text-slate-400 mb-3">FAQ</h3>
-                            <div className="space-y-2 text-sm">
-                                <details className="rounded-xl bg-slate-50 dark:bg-gray-800 p-3">
-                                    <summary className="cursor-pointer font-semibold">Where does my money go?</summary>
-                                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
-                                        Contributions support verified initiatives, equipment, and recovery services.
-                                    </p>
-                                </details>
-                                <details className="rounded-xl bg-slate-50 dark:bg-gray-800 p-3">
-                                    <summary className="cursor-pointer font-semibold">Is this tax-deductible?</summary>
-                                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
-                                        It depends on your jurisdiction and eligibility. We recommend consulting a tax professional.
-                                    </p>
-                                </details>
-                                <details className="rounded-xl bg-slate-50 dark:bg-gray-800 p-3">
-                                    <summary className="cursor-pointer font-semibold">Can I get a refund?</summary>
-                                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-2">
-                                        Please contact support as soon as possible and we will review your request.
-                                    </p>
-                                </details>
-                            </div>
-                        </div>
-                    </section>
+                    <div className="h-10 lg:h-0" />
                 </div>
 
                 <aside className="hidden lg:block lg:pl-2">
@@ -375,11 +358,50 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                         <div className="mt-5 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-gray-900/60 px-4 py-3 text-xs text-slate-500">
                             This contribution supports program deployment and ongoing platform operations.
                         </div>
+                        <div className={`mt-5 rounded-xl border px-3 py-2.5 transition-colors ${termsError ? "border-red-300 bg-red-50/60 dark:bg-red-950/20" : "border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-gray-900/70"}`}>
+                            <label className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-200 leading-relaxed">
+                                <input
+                                    type="checkbox"
+                                    checked={hasAcceptedTerms}
+                                    onChange={(e) => {
+                                        setHasAcceptedTerms(e.target.checked);
+                                        if (e.target.checked) setTermsError(false);
+                                    }}
+                                    className="mt-0.5 size-5 rounded border-slate-400 text-primary focus:ring-primary"
+                                />
+                                <span>
+                                    I agree to the{" "}
+                                    <Link
+                                        href="/terms"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-block border-b border-slate-500/80 text-slate-900 dark:text-white leading-none pb-[1px] hover:border-slate-700"
+                                    >
+                                        Terms of Service
+                                    </Link>{" "}
+                                    and{" "}
+                                    <Link
+                                        href="/privacy"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-block border-b border-slate-500/80 text-slate-900 dark:text-white leading-none pb-[1px] hover:border-slate-700"
+                                    >
+                                        Privacy Policy
+                                    </Link>
+                                    .
+                                </span>
+                            </label>
+                            {termsError && (
+                                <p className="mt-2 text-[11px] font-medium text-red-600 dark:text-red-400">
+                                    Please accept the Terms of Service to continue.
+                                </p>
+                            )}
+                        </div>
                         <button
                             type="button"
                             onClick={handleDonate}
                             disabled={isSubmitting}
-                            className="mt-6 w-full bg-primary hover:bg-blue-700 text-white h-14 rounded-2xl font-bold text-lg shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-60"
+                            className={`mt-4 w-full bg-primary text-white h-14 rounded-2xl font-bold text-lg shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-60 ${hasAcceptedTerms ? "hover:bg-blue-700" : "opacity-80"}`}
                         >
                             Contribute ${amountDisplay}
                         </button>
@@ -408,12 +430,41 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
             </div>
 
             {/* Sticky Footer Action */}
-            <div className="fixed bottom-0 left-0 right-0 p-4 bg-background-light dark:bg-background-dark border-t border-gray-200 dark:border-gray-800 w-full z-50 lg:hidden">
+            <div className="fixed bottom-0 left-0 right-0 p-4 bg-background-light/85 dark:bg-background-dark/85 backdrop-blur-md border-t border-gray-200/90 dark:border-gray-800/90 w-full z-50 lg:hidden">
+                <div className={`mb-3 rounded-xl border px-3 py-2.5 transition-colors ${termsError ? "border-red-300 bg-red-50/60 dark:bg-red-950/20" : "border-slate-200 dark:border-slate-700 bg-white/80 dark:bg-gray-900/70"}`}>
+                    <label className="flex items-start gap-2.5 text-xs text-slate-700 dark:text-slate-200 leading-relaxed">
+                        <input
+                            type="checkbox"
+                            checked={hasAcceptedTerms}
+                            onChange={(e) => {
+                                setHasAcceptedTerms(e.target.checked);
+                                if (e.target.checked) setTermsError(false);
+                            }}
+                            className="mt-0.5 size-5 rounded border-slate-400 text-primary focus:ring-primary"
+                        />
+                        <span>
+                            I agree to the{" "}
+                            <Link href="/terms" target="_blank" rel="noopener noreferrer" className="inline-block border-b border-slate-500/80 text-slate-900 dark:text-white leading-none pb-[1px] hover:border-slate-700">
+                                Terms of Service
+                            </Link>{" "}
+                            and{" "}
+                            <Link href="/privacy" target="_blank" rel="noopener noreferrer" className="inline-block border-b border-slate-500/80 text-slate-900 dark:text-white leading-none pb-[1px] hover:border-slate-700">
+                                Privacy Policy
+                            </Link>
+                            .
+                        </span>
+                    </label>
+                    {termsError && (
+                        <p className="mt-2 text-[11px] font-medium text-red-600 dark:text-red-400">
+                            Please accept the Terms of Service to continue.
+                        </p>
+                    )}
+                </div>
                 <button
                     type="button"
                     onClick={handleDonate}
                     disabled={isSubmitting}
-                    className="w-full bg-primary hover:bg-blue-700 text-white h-16 rounded-xl font-bold text-lg shadow-lg shadow-primary/20 transition-all flex items-center justify-center gap-2 disabled:opacity-60"
+                    className={`w-full bg-primary text-white h-16 rounded-xl font-bold text-lg shadow-md shadow-primary/15 transition-all flex items-center justify-center gap-2 disabled:opacity-60 ${hasAcceptedTerms ? "hover:bg-blue-700" : "opacity-80"}`}
                 >
                     Contribute ${amountDisplay}
                 </button>

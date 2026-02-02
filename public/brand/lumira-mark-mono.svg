@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="lumiraMarkMonoTitle lumiraMarkMonoDesc">
+  <title id="lumiraMarkMonoTitle">Lumira Monochrome Mark</title>
+  <desc id="lumiraMarkMonoDesc">Monochrome version of the Lumira institutional symbol.</desc>
+  <path fill="currentColor" d="M10 8h12v34h32v14H10V8z"/>
+  <path fill="currentColor" d="M28 20h10v22H28z"/>
+  <path fill="currentColor" d="M44 12h10v30H44z"/>
+</svg>
