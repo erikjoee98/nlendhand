@@ -71,12 +71,19 @@ const AppShell: React.FC<AppShellProps> = ({ children }) => {
         const currentY = window.scrollY;
         const previousY = lastScrollY.current;
 
+        if (isMobileMenuOpen) {
+          setIsMobileHeaderVisible(true);
+          lastScrollY.current = currentY;
+          ticking = false;
+          return;
+        }
+
         if (currentY < 12) {
           setIsMobileHeaderVisible(true);
-        } else if (currentY > previousY + 8 && currentY > 64) {
+        } else if (currentY > previousY + 4 && currentY > 56) {
           setIsMobileHeaderVisible(false);
           setIsMobileMenuOpen(false);
-        } else if (currentY < previousY - 6) {
+        } else if (currentY < previousY - 2) {
           setIsMobileHeaderVisible(true);
         }
 
@@ -88,14 +95,14 @@ const AppShell: React.FC<AppShellProps> = ({ children }) => {
     lastScrollY.current = window.scrollY;
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [showMobileHeader]);
+  }, [showMobileHeader, isMobileMenuOpen]);
 
   return (
     <DonateSelectorContext.Provider value={{ openDonateSelector }}>
       <div className="min-h-screen bg-white dark:bg-gray-950">
         <div className="mx-auto w-full max-w-md lg:max-w-6xl xl:max-w-[1280px] min-h-screen relative shadow-2xl bg-white dark:bg-gray-950 overflow-x-hidden pb-8 lg:pb-0 lg:shadow-none lg:border-x lg:border-slate-100 dark:lg:border-slate-800">
           {showMobileHeader && (
-            <header className={`lg:hidden sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800 transition-transform duration-300 ${isMobileHeaderVisible ? "translate-y-0" : "-translate-y-full"}`}>
+            <header className={`lg:hidden fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800 transition-transform duration-300 ${isMobileHeaderVisible ? "translate-y-0" : "-translate-y-full"}`}>
               <div className="px-5 py-4 flex items-center justify-between">
                 <Link href="/" className="flex items-center gap-2.5">
                   <div className="size-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
@@ -147,6 +154,7 @@ const AppShell: React.FC<AppShellProps> = ({ children }) => {
               )}
             </header>
           )}
+          {showMobileHeader && <div className="lg:hidden h-[73px]" />}
           <header className="hidden lg:block sticky top-0 z-40 bg-white/80 dark:bg-gray-950/80 backdrop-blur-xl border-b border-slate-100 dark:border-slate-800">
             <div className="px-8 xl:px-10 py-4 flex items-center justify-between">
               <Link href="/" className="flex items-center gap-3">

@@ -44,11 +44,11 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                         <span className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-full">
                             Secure Medical Initiatives
                         </span>
-                        <h1 className="text-slate-900 dark:text-white text-4xl lg:text-6xl font-serif italic leading-tight">
-                            Premium, transparent contributions for modern medical impact.
+                        <h1 className="max-w-[18ch] text-slate-900 dark:text-white text-[2.55rem] lg:text-6xl font-serif italic leading-[1.08] lg:leading-tight">
+                            The standard for modern medical funding.
                         </h1>
-                        <p className="text-slate-500 dark:text-slate-400 text-base lg:text-lg font-medium leading-relaxed max-w-xl">
-                            Fund essential equipment, rehabilitation access, and breakthrough mobility programs with a platform built for trust, clarity, and long-term outcomes.
+                        <p className="text-slate-500 dark:text-slate-400 text-[15px] lg:text-lg font-medium leading-relaxed max-w-[34ch] lg:max-w-xl">
+                            Built for transparency, verification, and responsible capital deployment.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-3 pt-2">
                             <button
@@ -63,6 +63,20 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                             >
                                 Explore Initiatives
                             </Link>
+                        </div>
+                        <div className="lg:hidden flex flex-wrap gap-2.5 pt-1">
+                            <span className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                                <span className="material-symbols-outlined text-[14px] text-success">lock</span>
+                                Secured payments
+                            </span>
+                            <span className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                                <span className="material-symbols-outlined text-[14px] text-primary">verified</span>
+                                Verified initiatives
+                            </span>
+                            <span className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-widest text-slate-500">
+                                <span className="material-symbols-outlined text-[14px] text-primary">fact_check</span>
+                                Transparent allocation
+                            </span>
                         </div>
                     </div>
                     <div className="relative lg:max-w-[540px] lg:ml-auto">
