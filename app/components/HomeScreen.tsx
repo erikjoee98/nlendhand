@@ -64,20 +64,6 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                                 Explore Initiatives
                             </Link>
                         </div>
-                        <div className="lg:hidden flex flex-wrap gap-2.5 pt-1">
-                            <span className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                                <span className="material-symbols-outlined text-[14px] text-success">lock</span>
-                                Secured payments
-                            </span>
-                            <span className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                                <span className="material-symbols-outlined text-[14px] text-primary">verified</span>
-                                Verified initiatives
-                            </span>
-                            <span className="inline-flex items-center gap-1.5 h-8 px-3 rounded-full border border-slate-200 bg-white text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                                <span className="material-symbols-outlined text-[14px] text-primary">fact_check</span>
-                                Transparent allocation
-                            </span>
-                        </div>
                     </div>
                     <div className="relative lg:max-w-[540px] lg:ml-auto">
                         <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-gray-900">
@@ -224,8 +210,23 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                 </section>
             )}
 
-            {/* 4. TRUST SIGNALS */}
-            <section className="px-6 py-4 lg:px-8 xl:px-10">
+            {/* 4. MOBILE CREDIBILITY BLOCK */}
+            <section className="px-6 py-4 lg:hidden">
+                <div className="bg-slate-50 dark:bg-gray-900 p-6 rounded-[2rem] border border-slate-100 dark:border-slate-800">
+                    <div className="flex items-center gap-3 mb-4">
+                        <span className="material-symbols-outlined text-primary text-2xl">fact_check</span>
+                        <h4 className="font-black text-sm uppercase tracking-tight text-slate-900 dark:text-white">Operational Transparency</h4>
+                    </div>
+                    <div className="space-y-2 text-xs text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
+                        <p>Clear allocation methodology across active medical programs.</p>
+                        <p>Structured reporting on deployment progress and milestones.</p>
+                        <p>Verification workflow for initiative quality and oversight.</p>
+                    </div>
+                </div>
+            </section>
+
+            {/* 4. DESKTOP TRUST SIGNALS */}
+            <section className="hidden lg:block px-6 py-4 lg:px-8 xl:px-10">
                 <div className="bg-slate-50 dark:bg-gray-900 p-6 rounded-[2rem] border border-slate-100 dark:border-slate-800">
                     <div className="flex items-center gap-3 mb-4">
                         <span className="material-symbols-outlined text-success fill-1 text-2xl">verified</span>
