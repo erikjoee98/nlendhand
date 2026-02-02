@@ -1,12 +1,19 @@
 
 import { Campaign, SuccessStory } from '../types';
 
+const LAB_IMAGE =
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuCCnH5qzYJZmhVb7UDgPSpYWWgzLKSzIdjCQWvB5r8JIhYpB8D0jF-YDVyBSwz9YAK69pV49uEM0x8h4HYMXUS9v9ng6aJDgHp77xfaEGGT5zrpEO3DAMEGqMN4mLZJuXmIMK6CyBCzJp0CeptZnDTb_NPNOhjQZMtXp3hr2W1qjco9TrIydpQjUhnEPPqhliu66hta76txmsCcdC23YgPBeeQns7w-RG1H0tqFgp8GEU_fOyqiFoQExlHhqMtMBpXoBsrpEZffun0";
+const MRI_IMAGE =
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuDRbn8icngBRDXuH4TA3s3mqk0IFOpEdmAkldd8bnvCxvIDjCUJSJW2DmWF0nUneF3iIYKBNrhjgI1Xa_NcRqYVbFTOsUfdUgYxGu1IHG6o5Dmovpf4SpRmmE0biwzofXVOQHD5fwbdpztADx1pAU51k5Pc8yZq7M2tQe79NlMN6oRFI2rz8wJ2LcQ7pVO8X6hI84K5Nl_sybm9T6Yid_kBi5gB9evFNwZ12eEoTuuItsS6mhSDdjcvbcQwiYt-OqChyq2VZJkCstk";
+const ONCOLOGY_IMAGE =
+    "https://lh3.googleusercontent.com/aida-public/AB6AXuCbJu09WO2edRjGmL5zMuyQsBH0aKiikE2jnVs8N5m1m0pp-faqOw-33seEW0rhwFHPojyrI1JI_v8BFDSPsp1A0TUk0DcAZ-bJ-jpu5BTzlK4BGG6ACkLY_Jy7qRW03zaitqZuFg9sbG_0uY8XzL1crm8SrOFp1T5DvQH8H2TA_j1ACoP45OubKem4JasVAioCljT3FmH51SCOWiYt77Omj2JNkpNtQ5P3cSHfYUaVJ4eEZf-qtLNZCTeqo8SxCJyr_2HUivlClV8";
+
 export const MOCK_CAMPAIGNS: Campaign[] = [
     {
         id: '1',
         title: "Advanced Prosthetic Technology Fund",
         description: "This initiative supports access to next-generation prosthetic technology designed to restore mobility, independence, and quality of life.",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA0z287pxiHhm0ACu4-6I4iquQ0GlR3_n0nl8xUfbNxiIQt_SVgfssF0gl8sTVUuVaWvsk0kusT-cA3TK44mpBYf8tmKTudih16XSHidJlrPstSjih1dmwQkQ5I3OYTkAdHhiIDODkzep61SeLQrl_x9J8juEhiIfiv5Zu2R8vsjcOg2F396omO1NlEQyfIdF8vPJBClgisAle8Gf7G6mxoG-_zhkHqCgolw70wwiY0j7F_h-OephL3KzP9RRP4qpRFru6pWo1AYIQ",
+        image: LAB_IMAGE,
         raised: 45280,
         goal: 60000,
         percentage: 75,
@@ -18,7 +25,7 @@ export const MOCK_CAMPAIGNS: Campaign[] = [
         id: '2',
         title: "Pediatric Mobility Equipment",
         description: "Focused on expanding access to specialized mobility equipment that enables children with physical challenges to move freely and confidently.",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDSAvXFeYtu79Gj3jVCuap6aWvxFPCIrtBAmGpMAGvyAFfZtphXESe7-RcXnK0L3Aty32kka-YRYki_l9885Lfr4rGlHv4UeYSZXTleb5bkcD9A1x2l22VsmqzLb7uRw47SnLQtIpD7Wr4ofROzCFOByUwNZIcsn6fD_v1DDBk4Bz5jdZRawYuMvO_YoOmsjrCPExP-o90wT0pX3sBTE_wDOvmsdQ8Qbzg1Hsb8mhKC55abaF95i1NmkkyTmzOUEx2IRErRBQ8xYF4",
+        image: MRI_IMAGE,
         raised: 8200,
         goal: 10000,
         percentage: 82,
@@ -30,7 +37,7 @@ export const MOCK_CAMPAIGNS: Campaign[] = [
         id: '3',
         title: "Rehabilitation Access Program",
         description: "Supporting critical rehabilitation resources that help individuals recover faster and regain independence after serious injury.",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuA0z287pxiHhm0ACu4-6I4iquQ0GlR3_n0nl8xUfbNxiIQt_SVgfssF0gl8sTVUuVaWvsk0kusT-cA3TK44mpBYf8tmKTudih16XSHidJlrPstSjih1dmwQkQ5I3OYTkAdHhiIDODkzep61SeLQrl_x9J8juEhiIfiv5Zu2R8vsjcOg2F396omO1NlEQyfIdF8vPJBClgisAle8Gf7G6mxoG-_zhkHqCgolw70wwiY0j7F_h-OephL3KzP9RRP4qpRFru6pWo1AYIQ",
+        image: ONCOLOGY_IMAGE,
         raised: 12500,
         goal: 45000,
         percentage: 27,
@@ -42,7 +49,7 @@ export const MOCK_CAMPAIGNS: Campaign[] = [
         id: '4',
         title: "Critical Care Equipment Fund",
         description: "Helping expand access to essential medical equipment that supports high-quality patient care in demanding environments.",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCON3XrxHX8dTRrOKvYijKCGk_TvGKb9RctNBL8XDguS1slpSZJBBdFP56NJpFO_rul_JceGkyawS_07qNpbIwSjHyu0DaDedgJATSCTqGG9jZm4UJvhhFWJ-zgTeO3C1cCLvL_VFHMMzc7RqY2O5hjSwkut-WQfarfzeWFWQITKNcVrvwnL2Z7-tb1pBmOa1iogKKIaiwXaqVKgyQyZ_kEn81jjVMtioYafxe4_XE6rURSY-yDz76DpyO1BI4a7dZrW0ticQuHVbs",
+        image: MRI_IMAGE,
         raised: 31000,
         goal: 35000,
         percentage: 88,
@@ -54,7 +61,7 @@ export const MOCK_CAMPAIGNS: Campaign[] = [
         id: '5',
         title: "Smart Mobility Innovation",
         description: "Investing in emerging assistive technologies that redefine what mobility and independence can look like.",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAYfGq-w28cZ7cToX5xptnZP1urj_QTSP6Tetn2ZiVaVqHtxDiL-v949eLxUepqj61dJtLY75lYLrb6ntsgX5y8rnQlYGp6Y5QnCmsT2sz4_qbK-JPGJoD7vLPzU8tpcJNJesMS09ax8HCFsEFYPjRVG7vXJ9CZxsi7Lt3pUnHL8ZxpvJ5Wr03tHpdOmyeblGjqOQ_O9vlLC0KMKfgqMF0aAomw826ai2PLmJPACwwIZfvuxJPRfcQenItAD_E1TnfdF-7lBvmKLo0",
+        image: ONCOLOGY_IMAGE,
         raised: 14000,
         goal: 15000,
         percentage: 93,
@@ -66,7 +73,7 @@ export const MOCK_CAMPAIGNS: Campaign[] = [
         id: '6',
         title: "Emergency Medical Support Fund",
         description: "A flexible initiative designed to support urgent medical needs where timely resources can make a meaningful difference.",
-        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAYfGq-w28cZ7cToX5xptnZP1urj_QTSP6Tetn2ZiVaVqHtxDiL-v949eLxUepqj61dJtLY75lYLrb6ntsgX5y8rnQlYGp6Y5QnCmsT2sz4_qbK-JPGJoD7vLPzU8tpcJNJesMS09ax8HCFsEFYPjRVG7vXJ9CZxsi7Lt3pUnHL8ZxpvJ5Wr03tHpdOmyeblGjqOQ_O9vlLC0KMKfgqMF0aAomw826ai2PLmJPACwwIZfvuxJPRfcQenItAD_E1TnfdF-7lBvmKLo0",
+        image: LAB_IMAGE,
         raised: 28000,
         goal: 28000,
         percentage: 100,
@@ -79,7 +86,7 @@ export const MOCK_CAMPAIGNS: Campaign[] = [
 export const MOCK_SUCCESS_STORIES: SuccessStory[] = [
     {
         id: 'elena',
-        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuAYfGq-w28cZ7cToX5xptnZP1urj_QTSP6Tetn2ZiVaVqHtxDiL-v949eLxUepqj61dJtLY75lYLrb6ntsgX5y8rnQlYGp6Y5QnCmsT2sz4_qbK-JPGJoD7vLPzU8tpcJNJesMS09ax8HCFsEFYPjRVG7vXJ9CZxsi7Lt3pUnHL8ZxpvJ5Wr03tHpdOmyeblGjqOQ_O9vlLC0KMKfgqMF0aAomw826ai2PLmJPACwwIZfvuxJPRfcQenItAD_E1TnfdF-7lBvmKLo0",
+        img: LAB_IMAGE,
         name: "Mobility Program Outcome",
         detail: "Advanced prosthetic access improved independent movement.",
         fullStory: "A recent mobility initiative delivered advanced prosthetic technology and specialized therapy support. Participants reported improved independence and measurable gains in daily mobility.",
@@ -90,7 +97,7 @@ export const MOCK_SUCCESS_STORIES: SuccessStory[] = [
     },
     {
         id: 'david',
-        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuCON3XrxHX8dTRrOKvYijKCGk_TvGKb9RctNBL8XDguS1slpSZJBBdFP56NJpFO_rul_JceGkyawS_07qNpbIwSjHyu0DaDedgJATSCTqGG9jZm4UJvhhFWJ-zgTeO3C1cCLvL_VFHMMzc7RqY2O5hjSwkut-WQfarfzeWFWQITKNcVrvwnL2Z7-tb1pBmOa1iogKKIaiwXaqVKgyQyZ_kEn81jjVMtioYafxe4_XE6rURSY-yDz76DpyO1BI4a7dZrW0ticQuHVbs",
+        img: MRI_IMAGE,
         name: "Rehabilitation Access Update",
         detail: "Expanded therapy access shortened recovery timelines.",
         fullStory: "Rehabilitation access programs expanded therapy capacity, reducing wait times and enabling faster recovery pathways for participants.",
@@ -101,7 +108,7 @@ export const MOCK_SUCCESS_STORIES: SuccessStory[] = [
     },
     {
         id: 'marcus',
-        img: "https://lh3.googleusercontent.com/aida-public/AB6AXuD9qb_2OkeyZUehBl9MkxHJvM8__qQV1motv7Qdo89uSCT7Q9maHudeGGKU1yoIxscEGT7s8k7JvZAfO-hi-YTbQR99-b9SZ_OYIFykkl7xj-j8n6LFMY08h4HTZ9bFvlHWnz1eJ4nFPaQ7VPa-8y6VJyJk-5DKC9VrXoG7MSUBFfI8kRU-AihzEN9MV8bqid3Cin0l1bWRg8372z9S8eI5DbTMmH4VHG-H4-HzdSE2YFGFhVXDpWtNv7t7vXSdOyPF43org201tyY",
+        img: ONCOLOGY_IMAGE,
         name: "Critical Equipment Deployment",
         detail: "Improved readiness for high-demand care environments.",
         fullStory: "Critical care equipment deployments supported facilities with essential tools, improving readiness and overall care quality in demanding settings.",

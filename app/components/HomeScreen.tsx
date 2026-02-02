@@ -31,21 +31,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
     )
     .slice(0, 3);
 
-  return (
-    <div className="pb-32 bg-white dark:bg-gray-950">
-            {/* 1. TOP SECTION (ENTRY) */}
-            <header className="sticky top-0 z-50 flex items-center bg-white/80 dark:bg-gray-950/80 backdrop-blur-md px-6 py-4 justify-between border-b border-gray-100 dark:border-gray-800 lg:hidden">
-                <div className="flex items-center gap-2">
-                    <div className="text-primary flex size-8 items-center justify-center bg-primary/10 rounded-lg">
-                        <span className="material-symbols-outlined text-lg">volunteer_activism</span>
-                    </div>
-                    <h2 className="text-slate-900 dark:text-white text-base font-black tracking-tight">Lumira</h2>
-                </div>
-            </header>
+  const activeInitiatives = campaigns
+    .filter((c) => c.id !== heroFeatured.id && c.percentage < 100)
+    .slice(0, 3);
 
+  return (
+    <div className="pb-32 bg-background-light dark:bg-gray-950">
             {/* Hero */}
-            <section className="px-6 pt-8 pb-8 lg:pt-12 lg:pb-12 lg:px-8 xl:px-10">
-                <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-center min-h-[70vh] lg:min-h-[65vh]">
+            <section className="px-6 pt-8 pb-8 lg:pt-14 lg:pb-14 lg:px-8 xl:px-10">
+                <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center min-h-[66vh] lg:min-h-[68vh]">
                     <div className="space-y-6">
                         <span className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-full">
                             Secure Medical Initiatives
@@ -56,7 +50,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                         <p className="text-slate-500 dark:text-slate-400 text-base lg:text-lg font-medium leading-relaxed max-w-xl">
                             Fund essential equipment, rehabilitation access, and breakthrough mobility programs with a platform built for trust, clarity, and long-term outcomes.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-3">
+                        <div className="flex flex-col sm:flex-row gap-3 pt-2">
                             <button
                                 onClick={openDonateSelector}
                                 className="h-14 px-8 rounded-2xl bg-slate-900 text-white font-black text-base shadow-xl shadow-slate-900/25 transition-transform active:scale-95 lg:h-16 lg:text-lg lg:px-10"
@@ -71,15 +65,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                             </Link>
                         </div>
                     </div>
-                    <div className="relative">
-                        <div className="rounded-[2.5rem] overflow-hidden shadow-md border border-slate-100 dark:border-slate-800 bg-white dark:bg-gray-900">
-                            <div className="relative h-64 sm:h-72 lg:h-[280px] bg-center bg-cover">
+                    <div className="relative lg:max-w-[540px] lg:ml-auto">
+                        <div className="rounded-2xl overflow-hidden shadow-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-gray-900">
+                            <div className="relative h-64 sm:h-72 lg:h-[300px] bg-center bg-cover">
                                 <div
                                     className="absolute inset-0 bg-center bg-cover"
                                     style={{ backgroundImage: `url("${heroFeatured.image}")` }}
                                 />
                             </div>
-                            <div className="p-6 space-y-4">
+                            <div className="p-6 space-y-4 bg-white dark:bg-gray-900">
                                 <div className="flex items-center justify-between">
                                     <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Featured Initiative</span>
                                     <span className="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/10 px-2 py-1 rounded-full">Priority</span>
@@ -113,8 +107,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                 </div>
             </section>
 
-            <section className="px-6 lg:px-8 xl:px-10 pb-8 lg:pb-12 mt-3 lg:mt-4">
-                <div className="flex flex-col lg:flex-row gap-4 lg:gap-10 bg-slate-50 dark:bg-gray-900/40 border border-slate-200 dark:border-slate-700 rounded-2xl px-6 py-4 text-xs font-bold uppercase tracking-widest text-slate-600 shadow-md">
+            <section className="px-6 lg:px-8 xl:px-10 pb-8 lg:pb-10 mt-3 lg:mt-2">
+                <div className="flex flex-col lg:flex-row gap-4 lg:gap-10 bg-white dark:bg-gray-900/70 border-y border-slate-200 dark:border-slate-700 px-6 py-6 text-xs font-bold uppercase tracking-widest text-slate-600">
                     <div className="flex items-center gap-2">
                         <span className="material-symbols-outlined text-success text-[18px] shrink-0">lock</span>
                         Secure payments via Stripe
@@ -135,26 +129,23 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
             </section>
 
             {/* 2. ACTIVE INITIATIVES */}
-            <section className="px-6 py-6 lg:px-8 xl:px-10 lg:py-10">
-                <div className="flex items-center justify-between mb-5">
+            <section className="px-6 py-8 lg:px-8 xl:px-10 lg:py-12">
+                <div className="flex items-center justify-between mb-6">
                     <h3 className="text-slate-900 dark:text-white text-lg font-black tracking-tight">Active Medical Initiatives</h3>
                     <Link href="/explore" className="text-primary text-[11px] font-black uppercase tracking-widest hover:underline">View all</Link>
                 </div>
-                <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
-                    {campaigns
-                        .filter((c) => c.id !== heroFeatured.id && c.percentage < 100)
-                        .slice(0, 3)
-                        .map((campaign) => (
+                <div className="grid grid-cols-1 gap-5">
+                    {activeInitiatives.map((campaign, index) => (
                             <Link
                                 key={campaign.id}
                                 href={`/campaign/${campaign.id}`}
-                                className="group flex flex-col rounded-[1.75rem] overflow-hidden bg-white dark:bg-gray-900 border border-slate-100 dark:border-slate-800 shadow-md transition-all active:scale-[0.99] lg:hover:-translate-y-1 lg:hover:shadow-xl"
+                                className={`group grid grid-cols-1 ${index % 2 === 1 ? "lg:grid-cols-[1fr_0.8fr]" : "lg:grid-cols-[0.8fr_1fr]"} rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-slate-200/80 dark:border-slate-800 shadow-sm transition-all active:scale-[0.99] lg:hover:shadow-lg`}
                             >
                                 <div
-                                    className="w-full h-44 bg-center bg-cover"
+                                    className={`w-full h-52 lg:h-full bg-center bg-cover ${index % 2 === 1 ? "lg:order-2" : ""}`}
                                     style={{ backgroundImage: `url("${campaign.image}")` }}
                                 />
-                                <div className="p-5 space-y-3">
+                                <div className="p-6 space-y-3">
                                     <h4 className="text-base font-black text-slate-900 dark:text-white line-clamp-1">{campaign.title}</h4>
                                     <p className="text-xs text-slate-500 dark:text-slate-400 font-medium line-clamp-2 leading-relaxed">{campaign.description}</p>
                                     <div className="text-xs font-bold text-primary">
@@ -178,7 +169,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
             {/* 3. URGENT CAPITAL NEEDS */}
             {urgentNeeds.length > 0 && (
                 <section className="px-6 py-10 lg:px-8 xl:px-10 lg:py-12">
-                    <div className="rounded-[2.5rem] border border-slate-100 dark:border-slate-800 bg-slate-50/40 dark:bg-gray-900/30 p-6 lg:p-8">
+                    <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-gray-900/30 p-6 lg:p-8">
                         <div className="flex items-center justify-between mb-3">
                             <h3 className="text-slate-900 dark:text-white text-lg font-black tracking-tight">Urgent Capital Needs</h3>
                         </div>
@@ -190,7 +181,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                                 <Link
                                     key={campaign.id}
                                     href={`/campaign/${campaign.id}`}
-                                    className="group flex flex-col rounded-[1.75rem] overflow-hidden bg-white dark:bg-gray-900 border border-slate-100 dark:border-slate-800 shadow-md transition-all active:scale-[0.99] lg:hover:-translate-y-1 lg:hover:shadow-lg"
+                                    className="group flex flex-col rounded-2xl overflow-hidden bg-white dark:bg-gray-900 border border-slate-200 dark:border-slate-800 shadow-sm transition-all active:scale-[0.99] lg:hover:-translate-y-0.5 lg:hover:shadow-md"
                                 >
                                     <div
                                         className="w-full h-44 bg-center bg-cover"
