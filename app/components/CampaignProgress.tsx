@@ -12,32 +12,35 @@ interface CampaignProgressProps {
 const CampaignProgress: React.FC<CampaignProgressProps> = ({ campaign }) => {
     return (
         <section className="px-6 mt-10">
-            <div className="flex justify-between items-end mb-4">
-                <div>
-                    <span className="text-4xl font-black tracking-tighter text-primary">${formatNumber(campaign.raised)}</span>
-                    <span className="text-sm font-bold text-slate-400 ml-1 italic">initial capital committed</span>
+            <div className="rounded-2xl bg-white dark:bg-gray-900 border border-slate-100 dark:border-slate-800 shadow-sm p-5 lg:rounded-none lg:bg-transparent lg:border-0 lg:shadow-none lg:p-0">
+                <div className="flex justify-between items-end mb-3">
+                    <div>
+                        <p className="text-[10px] font-black uppercase tracking-[0.18em] text-slate-400 mb-1">Capital Committed</p>
+                        <span className="text-3xl lg:text-4xl font-black tracking-tighter text-slate-900 dark:text-white">${formatNumber(campaign.raised)}</span>
+                    </div>
+                    <span className="text-[11px] font-semibold text-slate-500">{campaign.percentage}% progress</span>
                 </div>
-                <span className="text-xs font-black bg-primary/5 text-primary px-3 py-1.5 rounded-full ring-1 ring-primary/10">{campaign.percentage}% progress</span>
-            </div>
-            <div className="w-full h-3 bg-gray-100 dark:bg-gray-800 rounded-full mb-6 overflow-hidden">
-                <div className="h-full bg-primary rounded-full shadow-lg shadow-primary/20" style={{ width: `${campaign.percentage}%` }}></div>
-            </div>
-            <div className="text-xs font-semibold text-slate-500 mb-6">
-                ${formatNumber(Math.max(campaign.goal - campaign.raised, 0))} to unlock full program deployment
-            </div>
-            <div className="flex justify-around items-center py-6 border-y border-slate-50 dark:border-slate-800">
-                <div className="text-center">
-                    <p className="text-xl font-black text-slate-900 dark:text-white tracking-tighter">
-                        {formatNumber(campaign.patientsSupported ?? 0)}
-                    </p>
-                    <p className="text-[10px] uppercase tracking-widest font-black text-slate-400">Contributions</p>
+                <div className="w-full h-1.5 lg:h-2 bg-slate-100 dark:bg-gray-800 rounded-full mb-4 overflow-hidden">
+                    <div className="h-full bg-primary rounded-full" style={{ width: `${campaign.percentage}%` }}></div>
                 </div>
-                <div className="w-[1px] h-8 bg-slate-100 dark:bg-slate-800"></div>
-                <div className="text-center">
-                    <p className="text-xl font-black text-slate-900 dark:text-white tracking-tighter">
-                        ${formatNumber(Math.max(campaign.goal - campaign.raised, 0))}
-                    </p>
-                    <p className="text-[10px] uppercase tracking-widest font-black text-slate-400">Deployment Gap</p>
+                <div className="text-xs font-medium text-slate-500 mb-5">
+                    ${formatNumber(Math.max(campaign.goal - campaign.raised, 0))} capital remaining for full deployment
+                </div>
+            </div>
+            <div className="mt-4 rounded-2xl bg-slate-50/90 dark:bg-gray-900/70 border border-slate-100 dark:border-slate-800 px-4 py-4 lg:bg-transparent lg:border-0 lg:px-0 lg:py-6">
+                <div className="grid grid-cols-2 gap-4 items-center">
+                    <div className="text-left">
+                        <p className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+                            {formatNumber(campaign.patientsSupported ?? 0)}
+                        </p>
+                        <p className="text-[10px] uppercase tracking-[0.16em] font-black text-slate-400 mt-1">Contributions</p>
+                    </div>
+                    <div className="text-left">
+                        <p className="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+                            ${formatNumber(Math.max(campaign.goal - campaign.raised, 0))}
+                        </p>
+                        <p className="text-[10px] uppercase tracking-[0.16em] font-black text-slate-400 mt-1">Deployment Gap</p>
+                    </div>
                 </div>
             </div>
         </section>
