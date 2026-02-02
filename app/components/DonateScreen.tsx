@@ -205,7 +205,7 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                                     {finalCampaign.verified && (
                                         <div className="flex items-center gap-1 mt-1 text-green-500">
                                             <span className="material-symbols-outlined text-sm">verified</span>
-                                            <p className="text-xs font-semibold uppercase tracking-wider">Verified Initiative</p>
+                                            <p className="text-xs font-semibold uppercase tracking-wider">Reviewed Initiative</p>
                                         </div>
                                     )}
                                 </div>
@@ -416,7 +416,7 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                             </div>
                             <div className="flex items-center gap-2">
                                 <span className="material-symbols-outlined text-sm">verified</span>
-                                Verified initiative oversight
+                                Reviewed Initiative Oversight
                             </div>
                         </div>
                     </div>

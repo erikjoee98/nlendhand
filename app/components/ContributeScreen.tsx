@@ -121,7 +121,7 @@ const ContributeScreen: React.FC<ContributeScreenProps> = ({ campaigns }) => {
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-[10px] uppercase tracking-widest font-black text-slate-400">
-                          Verified Initiative
+                          Reviewed Initiative
                         </span>
                         {campaign.verified && (
                           <span className="material-symbols-outlined text-success text-sm">
@@ -195,15 +195,15 @@ const ContributeScreen: React.FC<ContributeScreenProps> = ({ campaigns }) => {
               <div className="space-y-2 text-xs text-slate-500">
                 <p className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-sm">lock</span>
-                  Secure Stripe checkout
+                  Secure Stripe Checkout
                 </p>
                 <p className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-sm">verified</span>
-                  Verified initiative oversight
+                  Structured Program Review
                 </p>
                 <p className="flex items-center gap-2">
                   <span className="material-symbols-outlined text-sm">description</span>
-                  Reporting and transparency standards
+                  Clear Contribution Tracking
                 </p>
               </div>
 

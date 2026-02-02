@@ -123,7 +123,7 @@ const DetailScreen: React.FC<DetailScreenProps> = ({ campaign }) => {
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <span className="material-symbols-outlined text-sm">verified</span>
-                                    Verified initiative oversight
+                                    Reviewed Initiative Oversight
                                 </div>
                             </div>
                             <Link
