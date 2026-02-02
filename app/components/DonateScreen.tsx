@@ -322,7 +322,7 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                                 {finalCampaign.verified && (
                                     <span className="inline-flex items-center gap-1 text-success text-xs font-black uppercase tracking-widest">
                                         <span className="material-symbols-outlined text-sm fill-1">verified</span>
-                                        Verified
+                                        Under Review
                                     </span>
                                 )}
                             </div>

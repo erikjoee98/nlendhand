@@ -93,7 +93,7 @@ const ContributeScreen: React.FC<ContributeScreenProps> = ({ campaigns }) => {
             Capital Allocation
           </h1>
           <p className="mt-2 text-sm text-slate-500 dark:text-slate-400 max-w-2xl">
-            Select a verified initiative and allocate capital through a secure,
+            Select a structured medical initiative and allocate capital through a secure,
             institution-grade checkout flow.
           </p>
         </div>
@@ -121,7 +121,7 @@ const ContributeScreen: React.FC<ContributeScreenProps> = ({ campaigns }) => {
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-[10px] uppercase tracking-widest font-black text-slate-400">
-                          Reviewed Initiative
+                          Structured Medical Initiative
                         </span>
                         {campaign.verified && (
                           <span className="material-symbols-outlined text-success text-sm">

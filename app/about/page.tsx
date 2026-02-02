@@ -41,7 +41,7 @@ export default function AboutPage() {
           <section className="space-y-3 rounded-xl border border-slate-100 dark:border-slate-800 bg-slate-50/70 dark:bg-gray-900/40 p-5 shadow-sm shadow-slate-900/5">
             <h2 className="text-xs font-black uppercase tracking-widest text-slate-400">How Funds Are Managed</h2>
             <ul className="list-disc pl-5 space-y-2">
-              <li>Capital is directed toward verified medical initiatives.</li>
+              <li>Capital is directed toward structured medical initiatives.</li>
               <li>Programs are selected based on long-term impact potential.</li>
               <li>Allocation decisions are managed by the platform operator.</li>
               <li>Funding supports both program deployment and operational sustainability.</li>

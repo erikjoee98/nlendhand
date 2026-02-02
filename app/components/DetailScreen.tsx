@@ -78,7 +78,7 @@ const DetailScreen: React.FC<DetailScreenProps> = ({ campaign }) => {
                         {campaign.verified && (
                             <div className="flex items-center gap-1">
                                 <span className="material-symbols-outlined text-[12px] text-success fill-1">verified</span>
-                                <span className="text-[10px] uppercase tracking-widest font-black text-slate-400">Verified</span>
+                                <span className="text-[10px] uppercase tracking-widest font-black text-slate-400">Under Review</span>
                             </div>
                         )}
                     </div>

@@ -38,14 +38,14 @@ const TrustScreen: React.FC = () => {
 
                         <div className="relative pl-12">
                             <div className="absolute left-0 top-0 size-8 bg-primary text-white rounded-full flex items-center justify-center text-xs font-black ring-4 ring-white dark:ring-gray-950 shadow-lg shadow-primary/20">02</div>
-                            <h4 className="font-black text-sm mb-2 uppercase tracking-tight">Vetting & Verification</h4>
-                            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Programs are reviewed against clinical needs and operational readiness before allocation.</p>
+                            <h4 className="font-black text-sm mb-2 uppercase tracking-tight">Program Review</h4>
+                            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Program scope and clinical requirements are evaluated through an internal review process.</p>
                         </div>
 
                         <div className="relative pl-12">
                             <div className="absolute left-0 top-0 size-8 bg-primary text-white rounded-full flex items-center justify-center text-xs font-black ring-4 ring-white dark:ring-gray-950 shadow-lg shadow-primary/20">03</div>
-                            <h4 className="font-black text-sm mb-2 uppercase tracking-tight">Direct Disbursement</h4>
-                            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Allocations are executed through vetted partners and tracked for accountability.</p>
+                            <h4 className="font-black text-sm mb-2 uppercase tracking-tight">Structured Deployment</h4>
+                            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">Currently progressing through structured deployment phases.</p>
                         </div>
                     </div>
                 </section>
@@ -64,7 +64,7 @@ const TrustScreen: React.FC = () => {
                             <p className="text-[10px] font-black text-slate-400 uppercase mb-2">Secure Payments</p>
                             <p className="text-sm font-black tracking-tight text-slate-900 dark:text-white">Processed via Stripe</p>
                             <div className="mt-4 flex items-center gap-1 text-[10px] text-success font-black">
-                                <span className="material-symbols-outlined text-xs">verified</span> Verified provider
+                                <span className="material-symbols-outlined text-xs">verified</span> Program in evaluation
                             </div>
                         </div>
                         <div className="bg-white dark:bg-gray-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700">
@@ -82,7 +82,7 @@ const TrustScreen: React.FC = () => {
                             <button className="text-[10px] font-black text-primary uppercase border border-primary/20 px-2 py-1 rounded">View Policy</button>
                         </div>
                         <div className="text-sm text-slate-500 dark:text-slate-400 font-medium leading-relaxed">
-                            Contributions support medical initiatives and platform sustainability. Allocation decisions are managed by the operator with verified partner oversight.
+                            Contributions support medical initiatives and platform sustainability. Allocation follows a defined operational framework.
                         </div>
                     </div>
                 </section>
@@ -113,7 +113,7 @@ const TrustScreen: React.FC = () => {
                                 </div>
                                 <div className="mt-4">
                                     <h4 className="font-black text-base">{voice.title}</h4>
-                                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 italic font-medium">"{voice.quote}"</p>
+                                    <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 italic font-medium">&ldquo;{voice.quote}&rdquo;</p>
                                 </div>
                             </div>
                         ))}

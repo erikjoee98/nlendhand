@@ -30,7 +30,7 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ campaigns }) => {
                 <div className="max-w-3xl">
                     <div className="flex items-center gap-2 text-primary font-black text-[11px] uppercase tracking-[0.2em]">
                         <span className="material-symbols-outlined text-sm fill-1">verified</span>
-                        Vetted Institutional Framework
+                        Structured Medical Framework
                     </div>
                     <h1 className="mt-4 text-4xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white">
                         Explore Medical Initiatives.
@@ -83,7 +83,7 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ campaigns }) => {
                                     >
                                         <div className="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-primary inline-flex items-center gap-1">
                                             <span className="material-symbols-outlined text-[12px] fill-1">verified</span>
-                                            Verified
+                                            Structured
                                         </div>
                                     </div>
                                     <div className="mt-4 space-y-2">
@@ -127,7 +127,7 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ campaigns }) => {
                             >
                                 <div className="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-primary inline-flex items-center gap-1">
                                     <span className="material-symbols-outlined text-[12px] fill-1">verified</span>
-                                    Verified
+                                    Structured
                                 </div>
                             </div>
                             <div className="mt-4 space-y-2">

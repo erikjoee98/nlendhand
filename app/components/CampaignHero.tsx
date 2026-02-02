@@ -17,13 +17,13 @@ const CampaignHero: React.FC<CampaignHeroProps> = ({ campaign }) => {
                         <div className="size-14 rounded-full border-2 border-white shadow-2xl bg-cover bg-center" style={{ backgroundImage: `url("${campaign.image}")` }}></div>
                         <div className="text-white">
                             <p className="font-black text-lg leading-tight">{campaign.title}</p>
-                            <p className="text-[10px] uppercase tracking-wider font-bold opacity-80">{campaign.category} • Initiative Verified</p>
+                            <p className="text-[10px] uppercase tracking-wider font-bold opacity-80">{campaign.category} • Program in evaluation</p>
                         </div>
                     </div>
                     {campaign.verified && (
                         <div className="bg-white/20 backdrop-blur-xl px-3 py-1.5 rounded-full border border-white/30 flex items-center gap-1.5">
                             <span className="material-symbols-outlined text-white text-[14px] fill-1">verified</span>
-                            <span className="text-white text-[9px] font-black uppercase tracking-widest">Program Verified</span>
+                            <span className="text-white text-[9px] font-black uppercase tracking-widest">Program in evaluation</span>
                         </div>
                     )}
                 </div>
@@ -36,13 +36,13 @@ const CampaignHero: React.FC<CampaignHeroProps> = ({ campaign }) => {
                             <span className="material-symbols-outlined text-primary text-3xl">medical_services</span>
                         </div>
                         <div>
-                            <h4 className="font-black text-slate-900 dark:text-white mb-1">Verified Medical Initiative</h4>
+                            <h4 className="font-black text-slate-900 dark:text-white mb-1">Structured Medical Initiative</h4>
                             <p className="text-[13px] text-slate-500 dark:text-slate-400 font-medium leading-snug">
-                                Program scope and clinical requirements are reviewed by <strong>Accredited Partners</strong>.
+                                Program scope and clinical requirements are evaluated through an internal review process.
                             </p>
                             <div className="mt-4 flex flex-wrap gap-2">
-                                <span className="px-2.5 py-1 bg-success/5 text-success text-[9px] font-black rounded-lg border border-success/10 uppercase tracking-widest">Verified Program</span>
-                                <span className="px-2.5 py-1 bg-primary/5 text-primary text-[9px] font-black rounded-lg border border-primary/10 uppercase tracking-widest">Active Programs</span>
+                                <span className="px-2.5 py-1 bg-success/5 text-success text-[9px] font-black rounded-lg border border-success/10 uppercase tracking-widest">Active Medical Program</span>
+                                <span className="px-2.5 py-1 bg-primary/5 text-primary text-[9px] font-black rounded-lg border border-primary/10 uppercase tracking-widest">Program in evaluation</span>
                             </div>
                         </div>
                     </div>
