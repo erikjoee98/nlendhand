@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import ExploreScreen from "../components/ExploreScreen";
 import { getActiveCampaigns } from "../../lib/data";
 
