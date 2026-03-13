@@ -11,7 +11,14 @@ interface CampaignHeroProps {
 const CampaignHero: React.FC<CampaignHeroProps> = ({ campaign }) => {
     return (
         <>
-            <div className="relative w-full aspect-[4/3] lg:aspect-[16/9] bg-center bg-no-repeat bg-cover overflow-hidden" style={{ backgroundImage: `url("${campaign.image}")` }}>
+            <div
+                className="relative w-full aspect-[4/3] lg:aspect-[16/9] bg-center bg-no-repeat bg-cover overflow-hidden"
+                style={{
+                    backgroundImage: `url("${campaign.image}")`,
+                    backgroundPosition:
+                        campaign.image === "/prosthetic.jpg" ? "50% 70%" : "center",
+                }}
+            >
                 <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between">
                     <div className="flex items-center gap-3">
                         <div className="size-14 rounded-full border-2 border-white shadow-2xl bg-cover bg-center" style={{ backgroundImage: `url("${campaign.image}")` }}></div>

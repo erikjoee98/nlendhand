@@ -79,7 +79,11 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ campaigns }) => {
                                 >
                                     <div
                                         className="relative w-full aspect-[16/10] rounded-lg bg-center bg-cover overflow-hidden"
-                                        style={{ backgroundImage: `url(${campaign.image})` }}
+                                        style={{
+                                            backgroundImage: `url(${campaign.image})`,
+                                            backgroundPosition:
+                                                campaign.image === "/prosthetic.jpg" ? "50% 75%" : "center",
+                                        }}
                                     >
                                         <div className="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-[#10b981] inline-flex items-center gap-1">
                                             <span className="material-symbols-outlined text-[12px] fill-1">verified</span>
@@ -123,7 +127,11 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ campaigns }) => {
                         >
                             <div
                                 className="relative w-full aspect-[16/10] rounded-lg bg-center bg-cover overflow-hidden"
-                                style={{ backgroundImage: `url(${campaign.image})` }}
+                                style={{
+                                    backgroundImage: `url(${campaign.image})`,
+                                    backgroundPosition:
+                                        campaign.image === "/prosthetic.jpg" ? "50% 75%" : "center",
+                                }}
                             >
                                 <div className="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-[#10b981] inline-flex items-center gap-1">
                                     <span className="material-symbols-outlined text-[12px] fill-1">verified</span>

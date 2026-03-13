@@ -2,13 +2,12 @@
 import { Campaign, SuccessStory } from '../types';
 
 const LAB_IMAGE =
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuCCnH5qzYJZmhVb7UDgPSpYWWgzLKSzIdjCQWvB5r8JIhYpB8D0jF-YDVyBSwz9YAK69pV49uEM0x8h4HYMXUS9v9ng6aJDgHp77xfaEGGT5zrpEO3DAMEGqMN4mLZJuXmIMK6CyBCzJp0CeptZnDTb_NPNOhjQZMtXp3hr2W1qjco9TrIydpQjUhnEPPqhliu66hta76txmsCcdC23YgPBeeQns7w-RG1H0tqFgp8GEU_fOyqiFoQExlHhqMtMBpXoBsrpEZffun0";
+    "https://cdn.pixabay.com/photo/2013/02/10/22/26/arabian-gulf-80359_1280.jpg";
 const MRI_IMAGE =
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDRbn8icngBRDXuH4TA3s3mqk0IFOpEdmAkldd8bnvCxvIDjCUJSJW2DmWF0nUneF3iIYKBNrhjgI1Xa_NcRqYVbFTOsUfdUgYxGu1IHG6o5Dmovpf4SpRmmE0biwzofXVOQHD5fwbdpztADx1pAU51k5Pc8yZq7M2tQe79NlMN6oRFI2rz8wJ2LcQ7pVO8X6hI84K5Nl_sybm9T6Yid_kBi5gB9evFNwZ12eEoTuuItsS6mhSDdjcvbcQwiYt-OqChyq2VZJkCstk";
 const ONCOLOGY_IMAGE =
     "https://lh3.googleusercontent.com/aida-public/AB6AXuCbJu09WO2edRjGmL5zMuyQsBH0aKiikE2jnVs8N5m1m0pp-faqOw-33seEW0rhwFHPojyrI1JI_v8BFDSPsp1A0TUk0DcAZ-bJ-jpu5BTzlK4BGG6ACkLY_Jy7qRW03zaitqZuFg9sbG_0uY8XzL1crm8SrOFp1T5DvQH8H2TA_j1ACoP45OubKem4JasVAioCljT3FmH51SCOWiYt77Omj2JNkpNtQ5P3cSHfYUaVJ4eEZf-qtLNZCTeqo8SxCJyr_2HUivlClV8";
-const PROSTHETIC_IMAGE =
-    "https://cdn.pixabay.com/photo/2019/04/18/11/10/prosthetic-4136661_1280.jpg";
+const PROSTHETIC_IMAGE = "/prosthetic.jpg";
 const PEDIATRIC_MOBILITY_IMAGE =
     "https://cdn.pixabay.com/photo/2024/03/13/09/00/child-8630542_1280.jpg";
 const REHAB_IMAGE =
@@ -16,6 +15,7 @@ const REHAB_IMAGE =
 const EMERGENCY_SUPPORT_IMAGE = LAB_IMAGE;
 const SMART_MOBILITY_IMAGE = ONCOLOGY_IMAGE;
 const CRITICAL_CARE_IMAGE = MRI_IMAGE;
+
 
 export const MOCK_CAMPAIGNS: Campaign[] = [
     {
