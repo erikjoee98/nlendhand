@@ -18,7 +18,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
     return null;
   }
 
-  const heroFeatured = campaigns.find((c) => c.id === "1") || campaigns[0];
+  const heroFeatured = campaigns.find((c) => c.id === "2") || campaigns[0];
 
   const urgentNeeds = campaigns
     .filter(

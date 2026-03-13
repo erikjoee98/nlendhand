@@ -13,6 +13,9 @@ const PEDIATRIC_MOBILITY_IMAGE =
     "https://cdn.pixabay.com/photo/2024/03/13/09/00/child-8630542_1280.jpg";
 const REHAB_IMAGE =
     "https://cdn.pixabay.com/photo/2024/01/19/07/44/clinic-8518335_1280.jpg";
+const EMERGENCY_SUPPORT_IMAGE = LAB_IMAGE;
+const SMART_MOBILITY_IMAGE = ONCOLOGY_IMAGE;
+const CRITICAL_CARE_IMAGE = MRI_IMAGE;
 
 export const MOCK_CAMPAIGNS: Campaign[] = [
     {
@@ -55,7 +58,7 @@ export const MOCK_CAMPAIGNS: Campaign[] = [
         id: '4',
         title: "Critical Care Equipment Fund",
         description: "Helping expand access to essential medical equipment that supports high-quality patient care in demanding environments.",
-        image: MRI_IMAGE,
+        image: CRITICAL_CARE_IMAGE,
         raised: 1900,
         goal: 35000,
         percentage: 5,
@@ -67,7 +70,7 @@ export const MOCK_CAMPAIGNS: Campaign[] = [
         id: '5',
         title: "Smart Mobility Innovation",
         description: "Investing in emerging assistive technologies that redefine what mobility and independence can look like.",
-        image: ONCOLOGY_IMAGE,
+        image: SMART_MOBILITY_IMAGE,
         raised: 1600,
         goal: 15000,
         percentage: 11,
@@ -79,7 +82,7 @@ export const MOCK_CAMPAIGNS: Campaign[] = [
         id: '6',
         title: "Emergency Medical Support Fund",
         description: "A flexible initiative designed to support urgent medical needs where timely resources can make a meaningful difference.",
-        image: LAB_IMAGE,
+        image: EMERGENCY_SUPPORT_IMAGE,
         raised: 2000,
         goal: 28000,
         percentage: 7,
