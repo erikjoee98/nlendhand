@@ -28,9 +28,9 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ campaigns }) => {
         <div className="pb-20 bg-background-light dark:bg-gray-950 min-h-screen">
             <section className="px-6 pt-10 lg:px-8 xl:px-10 lg:pt-14">
                 <div className="max-w-3xl">
-                    <div className="flex items-center gap-2 text-primary font-black text-[11px] uppercase tracking-[0.2em]">
-                        <span className="material-symbols-outlined text-sm fill-1">verified</span>
-                        Structured Medical Framework
+                    <div className="flex items-center gap-2 text-[#10b981] font-black text-[11px] uppercase tracking-[0.2em]">
+                        <span className="material-symbols-outlined text-[#10b981] text-sm fill-1">verified</span>
+                        <span className="text-[#10b981]">Structured Medical Framework</span>
                     </div>
                     <h1 className="mt-4 text-4xl lg:text-6xl font-black tracking-tight text-slate-900 dark:text-white">
                         Explore Medical Initiatives.
@@ -67,7 +67,7 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ campaigns }) => {
                 {selectedChip === "All" && urgentNeeds.length > 0 && (
                     <div className="mb-8 rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-gray-900/50 p-5">
                         <div className="flex items-center gap-2 mb-4">
-                            <span className="material-symbols-outlined text-primary text-sm">bolt</span>
+                            <span className="material-symbols-outlined text-[#10b981] text-sm">bolt</span>
                             <h3 className="text-sm font-black uppercase tracking-[0.2em] text-slate-500">Near Completion</h3>
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -81,14 +81,14 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ campaigns }) => {
                                         className="relative w-full aspect-[16/10] rounded-lg bg-center bg-cover overflow-hidden"
                                         style={{ backgroundImage: `url(${campaign.image})` }}
                                     >
-                                        <div className="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-primary inline-flex items-center gap-1">
+                                        <div className="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-[#10b981] inline-flex items-center gap-1">
                                             <span className="material-symbols-outlined text-[12px] fill-1">verified</span>
                                             Structured
                                         </div>
                                     </div>
                                     <div className="mt-4 space-y-2">
                                         {index === 0 && (
-                                            <span className="text-[11px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded">
+                                            <span className="text-[11px] font-bold text-[#10b981] bg-[#10b981]/10 px-2 py-0.5 rounded">
                                                 Priority Initiative
                                             </span>
                                         )}
@@ -104,7 +104,7 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ campaigns }) => {
                                                 <span>${formatNumber(campaign.raised)} / ${formatNumber(campaign.goal)}</span>
                                             </div>
                                             <div className="mt-2 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                                                <div className="h-full bg-primary rounded-full" style={{ width: `${campaign.percentage}%` }} />
+                                                <div className="h-full bg-[#10b981] rounded-full" style={{ width: `${campaign.percentage}%` }} />
                                             </div>
                                         </div>
                                     </div>
@@ -125,14 +125,14 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ campaigns }) => {
                                 className="relative w-full aspect-[16/10] rounded-lg bg-center bg-cover overflow-hidden"
                                 style={{ backgroundImage: `url(${campaign.image})` }}
                             >
-                                <div className="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-primary inline-flex items-center gap-1">
+                                <div className="absolute top-3 left-3 bg-white/90 dark:bg-gray-900/90 px-2 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-[#10b981] inline-flex items-center gap-1">
                                     <span className="material-symbols-outlined text-[12px] fill-1">verified</span>
                                     Structured
                                 </div>
                             </div>
                             <div className="mt-4 space-y-2">
                                 <div className="flex items-center justify-between gap-2">
-                                    <span className="text-[11px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded truncate">
+                                    <span className="text-[11px] font-bold text-[#10b981] bg-[#10b981]/10 px-2 py-0.5 rounded truncate">
                                         {campaign.category}
                                     </span>
                                 </div>
@@ -144,7 +144,7 @@ const ExploreScreen: React.FC<ExploreScreenProps> = ({ campaigns }) => {
                                         <span>${formatNumber(campaign.raised)} / ${formatNumber(campaign.goal)}</span>
                                     </div>
                                     <div className="mt-2 h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                                        <div className="h-full bg-primary rounded-full" style={{ width: `${campaign.percentage}%` }} />
+                                        <div className="h-full bg-[#10b981] rounded-full" style={{ width: `${campaign.percentage}%` }} />
                                     </div>
                                 </div>
                             </div>

@@ -64,7 +64,7 @@ export default function ProofOfProgress() {
           <p className="text-[10px] font-black text-slate-400 uppercase mb-2">
             Foundational Capital
           </p>
-          <p className="text-3xl lg:text-4xl font-black tracking-tighter text-primary">
+          <p className="text-3xl lg:text-4xl font-black tracking-tighter text-[#10b981]">
             {isLoading ? "—" : hasCapital ? `${totalRaisedDisplay} secured` : "Foundational capital secured"}
           </p>
           <p className="mt-2 text-[10px] text-slate-600 dark:text-slate-300 font-medium">
@@ -79,7 +79,7 @@ export default function ProofOfProgress() {
             <span className="material-symbols-outlined text-[14px] text-slate-400">local_hospital</span>
             Active Medical Programs
           </div>
-          <p className="text-3xl lg:text-4xl font-black tracking-tighter text-primary">
+          <p className="text-3xl lg:text-4xl font-black tracking-tighter text-[#10b981]">
             {isLoading ? "—" : formatNumber(progress.activeInitiatives)}
           </p>
           <p className="mt-2 text-[10px] text-slate-600 dark:text-slate-300 font-medium">

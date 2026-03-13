@@ -32,8 +32,8 @@ const CampaignHero: React.FC<CampaignHeroProps> = ({ campaign }) => {
             <div className="px-5 -mt-6 relative z-10">
                 <div className="bg-white dark:bg-gray-900 rounded-3xl p-6 shadow-2xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800">
                     <div className="flex items-start gap-4">
-                        <div className="size-12 rounded-2xl bg-primary/5 flex items-center justify-center shrink-0">
-                            <span className="material-symbols-outlined text-primary text-3xl">medical_services</span>
+                        <div className="size-12 rounded-2xl bg-[#10b981]/5 flex items-center justify-center shrink-0">
+                            <span className="material-symbols-outlined text-[#10b981] text-3xl">medical_services</span>
                         </div>
                         <div>
                             <h4 className="font-black text-slate-900 dark:text-white mb-1">Structured Medical Initiative</h4>

@@ -16,7 +16,7 @@ const ImpactScreen: React.FC<ImpactScreenProps> = ({ stories }) => {
             {/* Header - Reusing Trust/Home pattern */}
             <header className="sticky top-0 z-50 flex items-center bg-white/90 dark:bg-gray-950/90 backdrop-blur-xl px-4 py-3 justify-between border-b border-slate-100 dark:border-slate-800 lg:hidden">
                 <div className="flex items-center gap-2">
-                    <div className="text-primary flex size-8 items-center justify-center bg-primary/10 rounded-lg">
+                    <div className="text-[#10b981] flex size-8 items-center justify-center bg-[#10b981]/10 rounded-lg">
                         <span className="material-symbols-outlined text-lg fill-1">monitoring</span>
                     </div>
                     <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Impact Reports</span>
@@ -37,7 +37,7 @@ const ImpactScreen: React.FC<ImpactScreenProps> = ({ stories }) => {
                 </section>
 
                 <div className="px-6 lg:px-8 xl:px-10 pt-6">
-                    <div className="flex flex-wrap items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-slate-500 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-gray-900/40 rounded-2xl px-4 py-2.5">
+                    <div className="flex flex-wrap items-center justify-center gap-3 text-center text-[10px] font-bold uppercase tracking-widest text-slate-500 border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-gray-900/40 rounded-2xl px-4 py-2.5">
                         <span className="inline-flex items-center gap-2">
                             <span className="material-symbols-outlined text-[16px] text-slate-500">lock</span>
                             Secure payment infrastructure
@@ -70,7 +70,7 @@ const ImpactScreen: React.FC<ImpactScreenProps> = ({ stories }) => {
                 {/* Early Platform Progress */}
                 <section className="px-8 py-8 bg-slate-50/50 dark:bg-gray-900/30 lg:px-8 xl:px-10 mt-6">
                     <div className="flex items-center gap-2 mb-8">
-                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-primary">Early Platform Progress</span>
+                        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#10b981]">Early Platform Progress</span>
                         <div className="h-[1px] flex-1 bg-slate-100 dark:bg-slate-800"></div>
                     </div>
 
@@ -98,10 +98,10 @@ const ImpactScreen: React.FC<ImpactScreenProps> = ({ stories }) => {
                     <div className="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-slate-100 dark:border-slate-800 shadow-sm">
                         <div className="flex justify-between items-center mb-4">
                             <span className="text-xs font-black uppercase text-slate-500">Capital Allocation</span>
-                            <span className="text-sm font-black text-primary">Initiatives & Operations</span>
+                            <span className="text-sm font-black text-[#10b981]">Initiatives & Operations</span>
                         </div>
                         <div className="h-2 w-full bg-slate-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                            <div className="h-full bg-primary" style={{ width: '85%' }}></div>
+                            <div className="h-full bg-[#10b981]" style={{ width: '85%' }}></div>
                         </div>
                         <p className="text-[11px] text-slate-400 mt-4 leading-relaxed font-medium italic text-center">
                             Capital supports both medical initiatives and the infrastructure required to operate the platform securely and responsibly.
@@ -113,7 +113,7 @@ const ImpactScreen: React.FC<ImpactScreenProps> = ({ stories }) => {
                 <section className="py-6">
                     <div className="flex items-center justify-between px-6 mb-8 lg:px-8 xl:px-10">
                         <h3 className="text-2xl font-black">Success Stories</h3>
-                        <button className="text-primary text-sm font-bold">Read All</button>
+                        <button className="text-[#10b981] text-sm font-bold">Read All</button>
                     </div>
                     <div className="flex overflow-x-auto gap-6 px-6 no-scrollbar pb-8 lg:px-8 xl:px-10">
                         {stories
@@ -150,7 +150,7 @@ const ImpactScreen: React.FC<ImpactScreenProps> = ({ stories }) => {
                         </p>
                         <Link
                             href="/donate"
-                            className="w-full h-12 bg-primary text-white rounded-2xl font-black text-base transition-transform active:scale-[0.98] flex items-center justify-center"
+                            className="w-full h-12 bg-[#10b981] text-white rounded-2xl font-black text-base transition-transform active:scale-[0.98] flex items-center justify-center"
                         >
                             Advance Critical Care Access
                         </Link>

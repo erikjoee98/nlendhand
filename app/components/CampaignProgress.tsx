@@ -21,7 +21,7 @@ const CampaignProgress: React.FC<CampaignProgressProps> = ({ campaign }) => {
                     <span className="text-[11px] font-semibold text-slate-500">{campaign.percentage}% progress</span>
                 </div>
                 <div className="w-full h-1.5 lg:h-2 bg-slate-100 dark:bg-gray-800 rounded-full mb-4 overflow-hidden">
-                    <div className="h-full bg-primary rounded-full" style={{ width: `${campaign.percentage}%` }}></div>
+                    <div className="h-full bg-[#10b981] rounded-full" style={{ width: `${campaign.percentage}%` }}></div>
                 </div>
                 <div className="text-xs font-medium text-slate-500 mb-5">
                     ${formatNumber(Math.max(campaign.goal - campaign.raised, 0))} capital remaining for full deployment

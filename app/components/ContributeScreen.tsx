@@ -109,7 +109,7 @@ const ContributeScreen: React.FC<ContributeScreenProps> = ({ campaigns }) => {
                   onClick={() => handleInitiativeSelect(campaign.id)}
                   className={`w-full text-left rounded-2xl border p-5 transition-all ${
                     isSelected
-                      ? "border-primary/40 bg-primary/5"
+                      ? "border-[#10b981]/40 bg-[#10b981]/5"
                       : "border-slate-200 dark:border-slate-800 bg-white dark:bg-gray-900 hover:border-slate-300"
                   }`}
                 >
@@ -135,7 +135,7 @@ const ContributeScreen: React.FC<ContributeScreenProps> = ({ campaigns }) => {
                       <p className="text-xs text-slate-500 dark:text-slate-400 mt-1 line-clamp-2">
                         {campaign.description}
                       </p>
-                      <div className="mt-3 text-xs font-semibold text-primary">
+                      <div className="mt-3 text-xs font-semibold text-[#10b981]">
                         ${formatNumber(campaign.raised)} committed
                       </div>
                     </div>
@@ -168,7 +168,7 @@ const ContributeScreen: React.FC<ContributeScreenProps> = ({ campaigns }) => {
                       onClick={() => setAmount(preset)}
                       className={`h-11 rounded-xl border text-sm font-bold transition-colors ${
                         amount === preset
-                          ? "border-primary bg-primary/10 text-primary"
+                          ? "border-[#10b981] bg-[#10b981]/10 text-[#10b981]"
                           : "border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200"
                       }`}
                     >
@@ -222,7 +222,7 @@ const ContributeScreen: React.FC<ContributeScreenProps> = ({ campaigns }) => {
                       setHasAcceptedTerms(e.target.checked);
                       if (e.target.checked) setTermsError(false);
                     }}
-                    className="mt-0.5 size-5 rounded border-slate-400 text-primary focus:ring-primary"
+                    className="mt-0.5 size-5 rounded border-slate-400 text-[#10b981] focus:ring-[#10b981]"
                   />
                   <span>
                     I agree to the{" "}
@@ -257,10 +257,15 @@ const ContributeScreen: React.FC<ContributeScreenProps> = ({ campaigns }) => {
                 type="button"
                 onClick={handleContribute}
                 disabled={isSubmitting}
+                style={{
+                  backgroundColor: hasAcceptedTerms
+                    ? "#10b981"
+                    : "rgba(16, 185, 129, 0.85)",
+                }}
                 className={`w-full h-14 rounded-xl text-white font-bold text-base transition-all ${
                   hasAcceptedTerms
-                    ? "bg-primary hover:bg-blue-700 shadow-md shadow-primary/20"
-                    : "bg-primary/85 shadow-sm"
+                    ? "hover:brightness-95 shadow-md shadow-[#10b981]/20"
+                    : "shadow-sm"
                 } disabled:opacity-60`}
               >
                 Contribute ${amountDisplay}

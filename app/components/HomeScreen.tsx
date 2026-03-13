@@ -41,7 +41,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
             <section className="px-6 pt-8 pb-8 lg:pt-14 lg:pb-14 lg:px-8 xl:px-10">
                 <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center min-h-[66vh] lg:min-h-[68vh]">
                     <div className="space-y-6">
-                        <span className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 text-primary text-[10px] font-black uppercase tracking-widest rounded-full">
+                        <span className="inline-flex items-center gap-2 px-3 py-1 bg-[#10b981]/10 text-[#10b981] text-[10px] font-black uppercase tracking-widest rounded-full">
                             Secure Medical Initiatives
                         </span>
                         <h1 className="max-w-[18ch] text-slate-900 dark:text-white text-[2.55rem] lg:text-6xl font-serif italic leading-[1.08] lg:leading-tight">
@@ -76,16 +76,16 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                             <div className="p-6 space-y-4 bg-white dark:bg-gray-900">
                                 <div className="flex items-center justify-between">
                                     <span className="text-[10px] font-black uppercase tracking-widest text-slate-400">Featured Initiative</span>
-                                    <span className="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/10 px-2 py-1 rounded-full">Priority</span>
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-[#10b981] bg-[#10b981]/10 px-2 py-1 rounded-full">Priority</span>
                                 </div>
                                 <h3 className="text-xl font-black text-slate-900 dark:text-white">{heroFeatured.title}</h3>
                                 <p className="text-sm text-slate-500 dark:text-slate-400 font-medium line-clamp-2">{heroFeatured.description}</p>
-                                <div className="text-lg font-black text-primary">
+                                <div className="text-lg font-black text-[#10b981]">
                                     ${formatNumber(heroFeatured.raised)}{" "}
                                     <span className="text-xs font-bold text-slate-400 italic">committed</span>
                                 </div>
                                 <div className="h-2 w-full bg-slate-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                                    <div className="h-full bg-primary rounded-full" style={{ width: `${heroFeatured.percentage}%` }}></div>
+                                    <div className="h-full bg-[#10b981] rounded-full" style={{ width: `${heroFeatured.percentage}%` }}></div>
                                 </div>
                                 <div className="text-xs font-semibold text-slate-500">
                                     ${formatNumber(Math.max(heroFeatured.goal - heroFeatured.raised, 0))} remaining to activate the program
@@ -114,15 +114,15 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                         Secure payments via Stripe
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-primary text-[18px] shrink-0">fact_check</span>
+                        <span className="material-symbols-outlined text-[#10b981] text-[18px] shrink-0">fact_check</span>
                         Transparent allocation model
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-primary text-[18px] shrink-0">verified</span>
+                        <span className="material-symbols-outlined text-[#10b981] text-[18px] shrink-0">verified</span>
                         Privately operated initiative
                     </div>
                     <div className="flex items-center gap-2">
-                        <span className="material-symbols-outlined text-primary text-[18px] shrink-0">public</span>
+                        <span className="material-symbols-outlined text-[#10b981] text-[18px] shrink-0">public</span>
                         Program-first capital
                     </div>
                 </div>
@@ -132,7 +132,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
             <section className="px-6 py-8 lg:px-8 xl:px-10 lg:py-12">
                 <div className="flex items-center justify-between mb-6">
                     <h3 className="text-slate-900 dark:text-white text-lg font-black tracking-tight">Active Medical Initiatives</h3>
-                    <Link href="/explore" className="text-primary text-[11px] font-black uppercase tracking-widest hover:underline">View all</Link>
+                    <Link href="/explore" className="text-[#10b981] text-[11px] font-black uppercase tracking-widest hover:underline">View all</Link>
                 </div>
                 <div className="grid grid-cols-1 gap-5">
                     {activeInitiatives.map((campaign, index) => (
@@ -148,16 +148,16 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                                 <div className="p-6 space-y-3">
                                     <h4 className="text-base font-black text-slate-900 dark:text-white line-clamp-1">{campaign.title}</h4>
                                     <p className="text-xs text-slate-500 dark:text-slate-400 font-medium line-clamp-2 leading-relaxed">{campaign.description}</p>
-                                    <div className="text-xs font-bold text-primary">
+                                    <div className="text-xs font-bold text-[#10b981]">
                                         ${formatNumber(campaign.raised)} committed
                                     </div>
                                     <div className="h-2 w-full bg-slate-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                                        <div className="h-full bg-primary rounded-full" style={{ width: `${campaign.percentage}%` }}></div>
+                                        <div className="h-full bg-[#10b981] rounded-full" style={{ width: `${campaign.percentage}%` }}></div>
                                     </div>
                                     <div className="text-xs font-semibold text-slate-500">
                                         ${formatNumber(Math.max(campaign.goal - campaign.raised, 0))} remaining to fully launch
                                     </div>
-                                    <span className="inline-flex items-center text-[11px] font-black uppercase tracking-widest text-primary">
+                                    <span className="inline-flex items-center text-[11px] font-black uppercase tracking-widest text-[#10b981]">
                                         Contribute
                                     </span>
                                 </div>
@@ -193,11 +193,11 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
                                         </div>
                                         <h4 className="text-base font-black text-slate-900 dark:text-white line-clamp-1">{campaign.title}</h4>
                                         <p className="text-xs text-slate-500 dark:text-slate-400 font-medium line-clamp-2 leading-relaxed">{campaign.description}</p>
-                                        <div className="text-xs font-bold text-primary">
+                                        <div className="text-xs font-bold text-[#10b981]">
                                             ${formatNumber(campaign.raised)} committed
                                         </div>
                                         <div className="h-3 w-full bg-slate-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                                            <div className="h-full bg-primary rounded-full" style={{ width: `${campaign.percentage}%` }}></div>
+                                            <div className="h-full bg-[#10b981] rounded-full" style={{ width: `${campaign.percentage}%` }}></div>
                                         </div>
                                         <div className="text-xs font-semibold text-slate-500">
                                             ${formatNumber(Math.max(campaign.goal - campaign.raised, 0))} remaining to expand access
@@ -214,7 +214,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ campaigns }) => {
             <section className="px-6 py-4 lg:hidden">
                 <div className="bg-slate-50 dark:bg-gray-900 p-6 rounded-[2rem] border border-slate-100 dark:border-slate-800">
                     <div className="flex items-center gap-3 mb-4">
-                        <span className="material-symbols-outlined text-primary text-2xl">fact_check</span>
+                        <span className="material-symbols-outlined text-[#10b981] text-2xl">fact_check</span>
                         <h4 className="font-black text-sm uppercase tracking-tight text-slate-900 dark:text-white">Operational Transparency</h4>
                     </div>
                     <div className="space-y-2 text-xs text-slate-500 dark:text-slate-400 font-medium leading-relaxed">

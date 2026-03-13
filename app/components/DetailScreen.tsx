@@ -111,7 +111,7 @@ const DetailScreen: React.FC<DetailScreenProps> = ({ campaign }) => {
                                 <p className="text-xs text-slate-400 font-medium">Program goal ${formatNumber(campaign.goal)} • {campaign.percentage}% progress</p>
                             </div>
                             <div className="h-2 w-full bg-slate-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                                <div className="h-full bg-primary rounded-full" style={{ width: `${campaign.percentage}%` }}></div>
+                                <div className="h-full bg-[#10b981] rounded-full" style={{ width: `${campaign.percentage}%` }}></div>
                             </div>
                             <div className="text-xs font-semibold text-slate-500">
                                 ${formatNumber(Math.max(campaign.goal - campaign.raised, 0))} to unlock full program deployment

@@ -133,7 +133,7 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                 <div className="px-4 py-6">
                     <h3 className="text-2xl font-serif italic text-slate-900 dark:text-white mb-2">Intentional Impact.</h3>
                     <p className="text-sm text-slate-500 dark:text-slate-400 font-medium mb-8">
-                        There are {matchingCampaigns.length} priority initiatives in the <span className="text-primary font-bold">{categoryLabel}</span> category. Please choose which program you&apos;d like to support.
+                        There are {matchingCampaigns.length} priority initiatives in the <span className="text-[#10b981] font-bold">{categoryLabel}</span> category. Please choose which program you&apos;d like to support.
                     </p>
 
                     <div className="grid grid-cols-1 gap-4">
@@ -141,29 +141,29 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                             <button 
                                 key={campaign.id}
                                 onClick={() => setSelectedId(campaign.id)}
-                                className="flex items-center gap-4 bg-white dark:bg-gray-900 p-4 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm active:scale-[0.98] transition-all text-left hover:border-primary/30 group"
+                                className="flex items-center gap-4 bg-white dark:bg-gray-900 p-4 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-sm active:scale-[0.98] transition-all text-left hover:border-[#10b981]/30 group"
                             >
                                 <div className="size-24 rounded-2xl bg-center bg-cover shrink-0 shadow-sm" style={{ backgroundImage: `url(${campaign.image})` }} />
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-center gap-1.5 mb-1">
-                                        <span className="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/5 px-2 py-0.5 rounded-full">Urgent</span>
+                                        <span className="text-[10px] font-black uppercase tracking-widest text-[#10b981] bg-[#10b981]/5 px-2 py-0.5 rounded-full">Urgent</span>
                                     {campaign.verified && <span className="material-symbols-outlined text-[14px] text-success fill-1">verified</span>}
                                     </div>
                                     <h4 className="text-base font-black text-slate-900 dark:text-white truncate">{campaign.title}</h4>
                                     <p className="text-xs text-slate-400 font-medium line-clamp-2 mt-1 leading-snug">{campaign.description}</p>
-                                    <div className="mt-3 text-[10px] font-semibold text-primary">
+                                    <div className="mt-3 text-[10px] font-semibold text-[#10b981]">
                                         ${formatNumber(campaign.raised)} initial capital committed
                                     </div>
                                     <div className="mt-2 flex items-center gap-3">
                                         <div className="flex-1 h-1.5 bg-slate-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                                            <div className="h-full bg-primary rounded-full" style={{ width: `${campaign.percentage}%` }}></div>
+                                            <div className="h-full bg-[#10b981] rounded-full" style={{ width: `${campaign.percentage}%` }}></div>
                                         </div>
                                     </div>
                                     <div className="mt-2 text-[10px] font-semibold text-slate-500">
                                         ${formatNumber(Math.max(campaign.goal - campaign.raised, 0))} to unlock full program deployment
                                     </div>
                                 </div>
-                                <span className="material-symbols-outlined text-slate-300 group-hover:text-primary">chevron_right</span>
+                                <span className="material-symbols-outlined text-slate-300 group-hover:text-[#10b981]">chevron_right</span>
                             </button>
                         ))}
                     </div>
@@ -249,7 +249,7 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
 
                     {/* Custom Amount */}
                     <div className="px-4 py-3 lg:px-0">
-                        <div className="flex w-full items-stretch rounded-xl overflow-hidden border border-[#cfd7e7] dark:border-gray-700 bg-white dark:bg-gray-900 focus-within:border-primary transition-colors">
+                        <div className="flex w-full items-stretch rounded-xl overflow-hidden border border-[#cfd7e7] dark:border-gray-700 bg-white dark:bg-gray-900 focus-within:border-[#10b981] transition-colors">
                             <div className="flex items-center justify-center pl-4 pr-3 text-gray-400 border-r border-slate-200 dark:border-slate-700">
                                 <span className="material-symbols-outlined text-lg">attach_money</span>
                             </div>
@@ -270,13 +270,13 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                         <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl p-5 shadow-sm">
                             <div className="flex items-center justify-between mb-3">
                             <h3 className="text-sm font-black uppercase tracking-widest text-slate-400">Initiative Progress</h3>
-                                <span className="text-xs font-black text-primary">{finalCampaign.percentage}% progress</span>
+                                <span className="text-xs font-black text-[#10b981]">{finalCampaign.percentage}% progress</span>
                             </div>
                             <div className="h-2 w-full bg-slate-100 dark:bg-gray-800 rounded-full overflow-hidden mb-3">
-                                <div className="h-full bg-primary" style={{ width: `${finalCampaign.percentage}%` }}></div>
+                                <div className="h-full bg-[#10b981]" style={{ width: `${finalCampaign.percentage}%` }}></div>
                             </div>
                             <div className="flex items-center justify-between text-xs font-semibold">
-                                <span className="text-primary">${formatNumber(finalCampaign.raised)} initial capital committed</span>
+                                <span className="text-[#10b981]">${formatNumber(finalCampaign.raised)} initial capital committed</span>
                                 <span className="text-slate-500">
                                     ${formatNumber(Math.max(finalCampaign.goal - finalCampaign.raised, 0))} to unlock full program deployment
                                 </span>
@@ -367,7 +367,7 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                                         setHasAcceptedTerms(e.target.checked);
                                         if (e.target.checked) setTermsError(false);
                                     }}
-                                    className="mt-0.5 size-5 rounded border-slate-400 text-primary focus:ring-primary"
+                                    className="mt-0.5 size-5 rounded border-slate-400 text-[#10b981] focus:ring-[#10b981]"
                                 />
                                 <span>
                                     I agree to the{" "}
@@ -401,7 +401,7 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                             type="button"
                             onClick={handleDonate}
                             disabled={isSubmitting}
-                            className={`mt-4 w-full bg-primary text-white h-14 rounded-2xl font-bold text-lg shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-60 ${hasAcceptedTerms ? "hover:bg-blue-700" : "opacity-80"}`}
+                            className={`mt-4 w-full bg-[#10b981] text-white h-14 rounded-2xl font-bold text-lg shadow-sm transition-all flex items-center justify-center gap-2 disabled:opacity-60 ${hasAcceptedTerms ? "hover:bg-[#0ea371]" : "opacity-80"}`}
                         >
                             Contribute ${amountDisplay}
                         </button>
@@ -440,7 +440,7 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                                 setHasAcceptedTerms(e.target.checked);
                                 if (e.target.checked) setTermsError(false);
                             }}
-                            className="mt-0.5 size-5 rounded border-slate-400 text-primary focus:ring-primary"
+                            className="mt-0.5 size-5 rounded border-slate-400 text-[#10b981] focus:ring-[#10b981]"
                         />
                         <span>
                             I agree to the{" "}
@@ -464,7 +464,7 @@ const DonateScreen: React.FC<DonateScreenProps> = ({ backHref, campaignId, categ
                     type="button"
                     onClick={handleDonate}
                     disabled={isSubmitting}
-                    className={`w-full bg-primary text-white h-16 rounded-xl font-bold text-lg shadow-md shadow-primary/15 transition-all flex items-center justify-center gap-2 disabled:opacity-60 ${hasAcceptedTerms ? "hover:bg-blue-700" : "opacity-80"}`}
+                    className={`w-full bg-[#10b981] text-white h-16 rounded-xl font-bold text-lg shadow-md shadow-[#10b981]/15 transition-all flex items-center justify-center gap-2 disabled:opacity-60 ${hasAcceptedTerms ? "hover:bg-[#0ea371]" : "opacity-80"}`}
                 >
                     Contribute ${amountDisplay}
                 </button>

@@ -7,13 +7,19 @@ const MRI_IMAGE =
     "https://lh3.googleusercontent.com/aida-public/AB6AXuDRbn8icngBRDXuH4TA3s3mqk0IFOpEdmAkldd8bnvCxvIDjCUJSJW2DmWF0nUneF3iIYKBNrhjgI1Xa_NcRqYVbFTOsUfdUgYxGu1IHG6o5Dmovpf4SpRmmE0biwzofXVOQHD5fwbdpztADx1pAU51k5Pc8yZq7M2tQe79NlMN6oRFI2rz8wJ2LcQ7pVO8X6hI84K5Nl_sybm9T6Yid_kBi5gB9evFNwZ12eEoTuuItsS6mhSDdjcvbcQwiYt-OqChyq2VZJkCstk";
 const ONCOLOGY_IMAGE =
     "https://lh3.googleusercontent.com/aida-public/AB6AXuCbJu09WO2edRjGmL5zMuyQsBH0aKiikE2jnVs8N5m1m0pp-faqOw-33seEW0rhwFHPojyrI1JI_v8BFDSPsp1A0TUk0DcAZ-bJ-jpu5BTzlK4BGG6ACkLY_Jy7qRW03zaitqZuFg9sbG_0uY8XzL1crm8SrOFp1T5DvQH8H2TA_j1ACoP45OubKem4JasVAioCljT3FmH51SCOWiYt77Omj2JNkpNtQ5P3cSHfYUaVJ4eEZf-qtLNZCTeqo8SxCJyr_2HUivlClV8";
+const PROSTHETIC_IMAGE =
+    "https://cdn.pixabay.com/photo/2019/04/18/11/10/prosthetic-4136661_1280.jpg";
+const PEDIATRIC_MOBILITY_IMAGE =
+    "https://cdn.pixabay.com/photo/2024/03/13/09/00/child-8630542_1280.jpg";
+const REHAB_IMAGE =
+    "https://cdn.pixabay.com/photo/2024/01/19/07/44/clinic-8518335_1280.jpg";
 
 export const MOCK_CAMPAIGNS: Campaign[] = [
     {
         id: '1',
         title: "Advanced Prosthetic Technology Fund",
         description: "This initiative supports access to next-generation prosthetic technology designed to restore mobility, independence, and quality of life.",
-        image: LAB_IMAGE,
+        image: PROSTHETIC_IMAGE,
         raised: 1800,
         goal: 60000,
         percentage: 3,
@@ -25,7 +31,7 @@ export const MOCK_CAMPAIGNS: Campaign[] = [
         id: '2',
         title: "Pediatric Mobility Equipment",
         description: "Focused on expanding access to specialized mobility equipment that enables children with physical challenges to move freely and confidently.",
-        image: MRI_IMAGE,
+        image: PEDIATRIC_MOBILITY_IMAGE,
         raised: 1500,
         goal: 10000,
         percentage: 15,
@@ -37,7 +43,7 @@ export const MOCK_CAMPAIGNS: Campaign[] = [
         id: '3',
         title: "Rehabilitation Access Program",
         description: "Supporting critical rehabilitation resources that help individuals recover faster and regain independence after serious injury.",
-        image: ONCOLOGY_IMAGE,
+        image: REHAB_IMAGE,
         raised: 1200,
         goal: 45000,
         percentage: 3,
